@@ -7,16 +7,17 @@
         mc:Ignorable="d"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         Title="Add New Customer"
-        Height="450"
+        Height="550"
         Width="800">
     <Grid Background="DimGray">
         <Grid.RowDefinitions>
-            <RowDefinition></RowDefinition>
+            <RowDefinition Height="1.5*"></RowDefinition>
 
-            <RowDefinition></RowDefinition>
-            <RowDefinition></RowDefinition>
-            <RowDefinition></RowDefinition>
-            <RowDefinition></RowDefinition>
+            <RowDefinition Height="1.5*"></RowDefinition>
+            <RowDefinition Height="3.5*"></RowDefinition>
+            <RowDefinition Height="1.5*"></RowDefinition>
+            <RowDefinition Height="1.5*"></RowDefinition>
+            <RowDefinition Height="1.5*"></RowDefinition>
             <RowDefinition></RowDefinition>
             <RowDefinition></RowDefinition>
 
@@ -52,17 +53,31 @@
                      materialDesign:HintAssist.HelperText="Enter book name"
                      Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                      Width="300" />
-            <TextBox Grid.Column="1"
-                     Name="txtBookDescription"
-                     VerticalAlignment="Center"
-                     Foreground="white"
-                     materialDesign:HintAssist.Hint="Book Description"
-                     materialDesign:HintAssist.HelperText="Enter Book Description"
-                     Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-                     Width="300" />
 
         </Grid>
+
         <Grid Grid.Row="2">
+            <StackPanel VerticalAlignment="Center">
+                <TextBox Name="txtRoomDesc"
+                         Height="100"
+                         Width="700"
+                         VerticalAlignment="Top"
+                         Foreground="white"
+                         materialDesign:HintAssist.Hint="Role Description"
+                         materialDesign:TextFieldAssist.CharacterCounterVisibility="{Binding Path=IsChecked, ElementName=MaterialDesignOutlinedTextBoxTextCountComboBox, Converter={StaticResource BooleanToVisibilityConverter}}"
+                         MaxLength="40"
+                         Style="{StaticResource MaterialDesignOutlinedTextBox}"
+                         TextWrapping="Wrap"
+                         VerticalScrollBarVisibility="Auto"
+                         Text="{Binding RoomDescription}" />
+                <CheckBox x:Name="MaterialDesignOutlinedTextBoxTextCountComboBox"
+                          Content="View Text Input Count"
+                          Width="700"
+                          Foreground="white"
+                          FontSize="10" />
+            </StackPanel>
+        </Grid>
+        <Grid Grid.Row="3">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition></ColumnDefinition>
                 <ColumnDefinition></ColumnDefinition>
@@ -85,7 +100,7 @@
                      Width="300" />
         </Grid>
 
-        <Grid Grid.Row="3">
+        <Grid Grid.Row="4">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition></ColumnDefinition>
                 <ColumnDefinition></ColumnDefinition>
@@ -112,7 +127,7 @@
             </ComboBox>
         </Grid>
 
-        <Grid Grid.Row="4">
+        <Grid Grid.Row="5">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition></ColumnDefinition>
                 <ColumnDefinition></ColumnDefinition>
@@ -146,7 +161,7 @@
         </Grid>
 
 
-        <Grid Grid.Row="5">
+        <Grid Grid.Row="6">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition></ColumnDefinition>
                 <ColumnDefinition></ColumnDefinition>
