@@ -23,6 +23,72 @@ namespace BusinessObjects.Configuration
             builder.HasOne(e => e.Book)
                   .WithMany(b => b.OrderDetails)
                   .HasForeignKey(e => e.BookId);
+            builder.HasData(
+            new OrderDetail
+            {
+                OrderId = 1,
+                BookId = 1,
+                Quantity = 2,
+                UnitPrice = 19.99m,
+                Discount = 0m
+            },
+            new OrderDetail
+            {
+                OrderId = 1,
+                BookId = 3,
+                Quantity = 1,
+                UnitPrice = 15.99m,
+                Discount = 1.00m
+            },
+            new OrderDetail
+            {
+                OrderId = 2,
+                BookId = 2,
+                Quantity = 1,
+                UnitPrice = 29.99m,
+                Discount = 0m
+            },
+            new OrderDetail
+            {
+                OrderId = 3,
+                BookId = 4,
+                Quantity = 1,
+                UnitPrice = 12.99m,
+                Discount = 0.50m
+            },
+            new OrderDetail
+            {
+                OrderId = 4,
+                BookId = 5,
+                Quantity = 3,
+                UnitPrice = 18.99m,
+                Discount = 0m
+            },
+            new OrderDetail
+            {
+                OrderId = 5,
+                BookId = 6,
+                Quantity = 2,
+                UnitPrice = 22.99m,
+                Discount = 2.00m
+            },
+            new OrderDetail
+            {
+                OrderId = 6,
+                BookId = 7,
+                Quantity = 1,
+                UnitPrice = 25.99m,
+                Discount = 0m
+            },
+            new OrderDetail
+            {
+                OrderId = 7,
+                BookId = 8,
+                Quantity = 1,
+                UnitPrice = 30.99m,
+                Discount = 5.00m
+            }
+        );
         }
     }
 }

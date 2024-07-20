@@ -13,7 +13,11 @@
   </ItemGroup>
 
   <ItemGroup>
+
+    <Resource Include="fptLogo.png" />
+
     <ProjectReference Include="..\Repositories\Repositories.csproj" />
+
   </ItemGroup>
 
   <ItemGroup>

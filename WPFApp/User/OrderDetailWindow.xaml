@@ -10,12 +10,12 @@
         Height="450"
         Width="800">
     <Grid Background="DimGray">
-        
-        
-        <Grid.RowDefinitions>
-            <RowDefinition></RowDefinition>
 
-            <RowDefinition Height="1*"></RowDefinition>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="2*"></RowDefinition>
+
+            <RowDefinition Height="*"></RowDefinition>
             <RowDefinition Height="1*"></RowDefinition>
             <RowDefinition Height="1*"></RowDefinition>
             <RowDefinition Height="4*"></RowDefinition>
@@ -40,10 +40,144 @@
                 </TextBlock.Foreground>
             </TextBlock>
         </Grid>
+        <Label Content="Label" />
+        <Label Content="Order ID:"
+               FontWeight="Bold"
+               HorizontalAlignment="Left"
+               Height="24"
+               Margin="51,0,0,0"
+               Grid.Row="1"
+               VerticalAlignment="Center"
+               Width="64" />
+        <TextBox HorizontalAlignment="Left"
+                 Height="24"
+                 Margin="141,0,0,0"
+                 Grid.Row="1"
+                 TextWrapping="Wrap"
+                 VerticalAlignment="Center"
+                 Width="189" />
+        <Label Content="Customer Name:"
+               FontWeight="Bold"
+               HorizontalAlignment="Left"
+               Height="24"
+               Margin="433,0,0,0"
+               Grid.Row="1"
+               VerticalAlignment="Center"
+               Width="110" />
+        <TextBox HorizontalAlignment="Left"
+                 Height="24"
+                 Margin="563,5,0,0"
+                 Grid.Row="1"
+                 TextWrapping="Wrap"
+                 VerticalAlignment="Top"
+                 Width="189" />
+        <Label Content="Price:"
+               FontWeight="Bold"
+               HorizontalAlignment="Left"
+               Height="24"
+               Margin="51,10,0,0"
+               Grid.Row="2"
+               VerticalAlignment="Top"
+               Width="64" />
+        <TextBox HorizontalAlignment="Left"
+                 Height="24"
+                 Margin="141,6,0,0"
+                 Grid.Row="2"
+                 TextWrapping="Wrap"
+                 VerticalAlignment="Top"
+                 Width="189" />
+        <Label Content="Status:"
+               FontWeight="Bold"
+               HorizontalAlignment="Left"
+               Margin="433,13,0,3"
+               Grid.Row="2"
+               Width="64" />
+        <TextBox HorizontalAlignment="Left"
+                 Height="24"
+                 Margin="563,6,0,0"
+                 Grid.Row="2"
+                 TextWrapping="Wrap"
+                 VerticalAlignment="Top"
+                 Width="189" />
 
-        
-        
 
+        <Grid Grid.Row="3">
+            <Label Content="Quantity: "
+                   FontWeight="Bold"
+                   HorizontalAlignment="Left"
+                   Margin="434,10,0,6"
+                   Width="64"
+                   RenderTransformOrigin="0.18,0.542" />
+
+        </Grid>
+        <Label Content="Date:"
+               FontWeight="Bold"
+               HorizontalAlignment="Left"
+               Height="24"
+               Margin="51,0,0,0"
+               Grid.Row="3"
+               VerticalAlignment="Center"
+               Width="64"
+               RenderTransformOrigin="0.5,0.5">
+            <Label.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform />
+                    <SkewTransform />
+                    <RotateTransform Angle="-1.219" />
+                    <TranslateTransform />
+                </TransformGroup>
+            </Label.RenderTransform>
+        </Label>
+        <TextBox HorizontalAlignment="Left"
+                 Height="24"
+                 Margin="141,5,0,0"
+                 Grid.Row="3"
+                 TextWrapping="Wrap"
+                 VerticalAlignment="Top"
+                 Width="189" />
+        <TextBox HorizontalAlignment="Left"
+                 Height="24"
+                 Margin="563,5,0,0"
+                 Grid.Row="3"
+                 TextWrapping="Wrap"
+                 VerticalAlignment="Top"
+                 Width="189" />
+
+        <Grid Grid.Row="4">
+            <ScrollViewer HorizontalScrollBarVisibility="Auto">
+                <DataGrid CanUserAddRows="True"
+                          CanUserDeleteRows="True"
+                          x:Name="dtBookCategoryDetails"
+                          SelectionMode="Extended"
+                          SelectionUnit="FullRow"
+                          AutoGenerateColumns="False"
+                          IsReadOnly="True"
+                          Width="768">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="BookCategoryId"
+                                            Binding="{Binding BookingReservationID}" />
+                        <DataGridTextColumn Header="BookGenreType"
+                                            Binding="{Binding RoomInformation.RoomNumber}" />
+                        <DataGridTextColumn Header="Description"
+                                            Binding="{Binding BookingReservation.BookingDate}" />
+                        <DataGridTemplateColumn Header="Action">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal">
+                                        <Button Content="Decline"
+                                                CommandParameter="{Binding BookingReservationID}"
+                                                Margin="5" />
+                                        <Button Content="Confirm"
+                                                CommandParameter="{Binding BookingReservationID}"
+                                                Margin="5" />
+                                    </StackPanel>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </ScrollViewer>
+        </Grid>
 
         <Grid Grid.Row="5">
             <Grid.ColumnDefinitions>
@@ -52,14 +186,16 @@
             </Grid.ColumnDefinitions>
             <Button Grid.Column="0"
                     Width="100"
-                    Content="Add"
+                    Content="Confirm"
                     Background="Orange"
                     Foreground="white"
-                    FontWeight="Bold"></Button>
-           
+                    FontWeight="Bold"
+                    IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
+                    Style="{StaticResource MaterialDesignPaperLightButton}"
+                    ToolTip="Resource name: MaterialDesignPaperLightButton" />
             <Button Grid.Column="1"
                     Width="100"
-                    Content="Cancel"
+                    Content="Close"
                     Background="Orange"
                     Foreground="White"
                     FontWeight="Bold"

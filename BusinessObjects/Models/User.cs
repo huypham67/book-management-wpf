@@ -17,7 +17,7 @@ namespace BusinessObjects.Models
         public string? PasswordHash { get; set; }
         public UserStatus Status { get; set; }
         public int RoleId { get; set; }
-        public Role? Role { get; set; }
+        public virtual Role? Role { get; set; }
         public ICollection<Order> Orders { get; set; } = new List<Order>();
     }
     public enum UserStatus
