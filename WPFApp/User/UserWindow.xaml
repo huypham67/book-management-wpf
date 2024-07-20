@@ -8,7 +8,7 @@
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         Title="Customer Window"
         Height="550"
-        Width="1400"
+        Width="1250"
         ResizeMode="NoResize">
     <Grid>
         <!--<TextBlock Text="{Binding CustomerFullName}"></TextBlock>-->
@@ -273,8 +273,8 @@
                                 <!-- Date Of Birth -->
                                 <Grid Grid.Row="1"
                                       Grid.Column="0"
-                                      Margin="10">
-                                    <TextBlock FontSize="15">Date Of Birth</TextBlock>
+                                      Margin="10,10,10,10">
+                                    <TextBlock FontSize="15" Margin="0,0,0,10">Date Of Birth</TextBlock>
                                 </Grid>
                                 <Border Grid.Row="1"
                                         Grid.Column="1"

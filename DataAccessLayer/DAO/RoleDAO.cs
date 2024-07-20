@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DataAccessLayer.DAO
 {
-    internal class RoleDAO
+    public class RoleDAO
     {
     }
 }
