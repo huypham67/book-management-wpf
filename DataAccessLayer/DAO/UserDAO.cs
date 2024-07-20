@@ -23,27 +23,27 @@ namespace DataAccessLayer.DAO
             _context = new();
             return _context.Users.SingleOrDefault(u => u.UserId == id);
         }
-        public User? GetCustomerByEmail(string email)
+        public User? GetUserByEmail(string email)
         {
             _context = new();
             return _context.Users.FirstOrDefault(u => u.Email == email);
         }
-        public void AddCustomer(Customer c)
+        public void AddUser(User u)
         {
             _context = new();
-            _context.Add(c);
+            _context.Add(u);
             _context.SaveChanges();
         }
-        public void UpdateCustomer(Customer c)
+        public void UpdateUser(User u)
         {
             _context = new();
-            _context.Update(c);
+            _context.Update(u);
             _context.SaveChanges();
         }
-        public void DeleteCustomer(Customer c)
+        public void DeleteUser(User u)
         {
             _context = new();
-            _context.Remove(c);
+            _context.Remove(u);
             _context.SaveChanges();
         }
     }

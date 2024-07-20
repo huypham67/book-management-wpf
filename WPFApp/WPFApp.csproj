@@ -13,7 +13,11 @@
   </ItemGroup>
 
   <ItemGroup>
+
     <Resource Include="fptLogo.png" />
+
+    <ProjectReference Include="..\Repositories\Repositories.csproj" />
+
   </ItemGroup>
 
   <ItemGroup>
@@ -36,9 +40,6 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Page>
     <Page Update="LoginWindow.xaml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Page>
-    <Page Update="MainWindow.xaml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Page>
     <Page Update="User\ChangePasswordWindow.xaml">

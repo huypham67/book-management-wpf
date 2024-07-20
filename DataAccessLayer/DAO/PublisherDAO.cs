@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DataAccessLayer.DAO
 {
-    internal class PublisherDAO
+    public class PublisherDAO
     {
     }
 }
