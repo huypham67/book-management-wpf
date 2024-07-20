@@ -66,7 +66,7 @@
                                          />
                             </Grid>
                         </Grid>
-                        <materialDesign:Card Width="600"
+                        <materialDesign:Card Width="1300"
                                              Padding="8">
 
                             <Grid>
@@ -160,7 +160,8 @@
 
                                 <!-- Password -->
                                 <Grid Grid.Row="6"
-                                      Grid.Column="0">
+                                      Grid.Column="0"
+                                      >
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="9*" />
                                         <ColumnDefinition Width="25*" />
@@ -235,8 +236,9 @@
                                          />
                             </Grid>
                         </Grid>
-                        <materialDesign:Card Width="700"
-                                             Padding="8">
+                        <materialDesign:Card Width="1300"
+                                             Height="400"
+                                             Padding="10">
 
                             <Grid>
                                 <Grid.RowDefinitions>

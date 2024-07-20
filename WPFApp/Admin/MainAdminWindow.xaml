@@ -59,6 +59,9 @@
                                   SelectionUnit="FullRow"
                                   CanUserDeleteRows="True"
                                   IsReadOnly="True" />
+                        <Image Source="/fptLogo.png"
+                               Width="1150"
+                               Height="300"></Image>
                     </StackPanel>
                 </TabItem>
                 <TabItem Width="200">
@@ -76,14 +79,16 @@
                     <StackPanel Margin="16">
                         <Grid>
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="453*"></ColumnDefinition>
+                                <ColumnDefinition Width="30*"></ColumnDefinition>
+                                <ColumnDefinition Width="33*" />
+                                <ColumnDefinition Width="390*" />
                                 <ColumnDefinition Width="24*" />
                                 <ColumnDefinition Width="691*" />
 
 
                             </Grid.ColumnDefinitions>
                             <Grid Grid.Column="0"
-                                  Grid.ColumnSpan="3">
+                                  Grid.ColumnSpan="5">
                                 <TextBlock Margin="0,0,0,8"
                                            Style="{StaticResource MaterialDesignHeadline5TextBlock}"
                                            Text="All books" />
@@ -444,7 +449,7 @@
                                                         Binding="{Binding RoomInformation.RoomNumber}" />
                                     <DataGridTextColumn Header="Description"
                                                         Binding="{Binding BookingReservation.BookingDate}" />
-                                   
+
                                     <DataGridTemplateColumn Header="Action">
                                         <DataGridTemplateColumn.CellTemplate>
                                             <DataTemplate>
