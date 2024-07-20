@@ -26,7 +26,7 @@
             <TextBlock HorizontalAlignment="Center"
                        FontSize="40"
                        Style="{StaticResource MaterialDesignHeadline2TextBlock}"
-                       Text="Add/Update User">
+                       Text="Add New User">
                 <TextBlock.Foreground>
                     <LinearGradientBrush StartPoint="0,0"
                                          EndPoint="1,0">
@@ -92,7 +92,7 @@
             </Grid.ColumnDefinitions>
             <DatePicker Name="txtDateOfBirth"
                         Foreground="white"
-                        materialDesign:HintAssist.Hint="DateOfBirth"
+                        materialDesign:HintAssist.Hint="Date Of Birth"
                         materialDesign:HintAssist.HelperText="Enter DateOfBirth"
                         Width="300"
                         Height="35"
@@ -101,8 +101,8 @@
                      VerticalAlignment="Center"
                      Name="txtPhoneNumber"
                      Foreground="white"
-                     materialDesign:HintAssist.Hint="PhoneNumber"
-                     materialDesign:HintAssist.HelperText="Enter PhoneNumber"
+                     materialDesign:HintAssist.Hint="Phone Number"
+                     materialDesign:HintAssist.HelperText="Enter Phone Number"
                      Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                      Width="300" />
         </Grid>
@@ -136,7 +136,7 @@
             </Grid.ColumnDefinitions>
             <Button Grid.Column="0"
                     Width="100"
-                    Content="Add"
+                    Content="Save"
                     Background="Orange"
                     Foreground="white"
                     FontWeight="Bold"

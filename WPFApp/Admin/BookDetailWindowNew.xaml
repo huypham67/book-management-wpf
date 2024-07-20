@@ -27,7 +27,7 @@
             <TextBlock HorizontalAlignment="Center"
                        FontSize="40"
                        Style="{StaticResource MaterialDesignHeadline2TextBlock}"
-                       Text="Add/Update Book">
+                       Text="Add New Book">
                 <TextBlock.Foreground>
                     <LinearGradientBrush StartPoint="0,0"
                                          EndPoint="1,0">
@@ -168,7 +168,7 @@
             </Grid.ColumnDefinitions>
             <Button Grid.Column="0"
                     Width="100"
-                    Content="Add"
+                    Content="Save"
                     Background="Orange"
                     Foreground="white"
                     FontWeight="Bold"
