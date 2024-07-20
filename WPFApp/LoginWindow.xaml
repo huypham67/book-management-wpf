@@ -50,13 +50,10 @@
                 </TextBlock.Foreground>
             </TextBlock>
 
-            <TextBlock Grid.Row="2"
-                       HorizontalAlignment="Center"
-                       VerticalAlignment="Center"
-                       Foreground="White">FPT is number 1. Mr Quang is the best <materialDesign:PackIcon Grid.Row="2"
-                                                                                                       Kind="Heart"
-                                                                                                       VerticalAlignment="Center"
-                                                                                                       Foreground="Red" /></TextBlock>
+            <materialDesign:PackIcon Grid.Row="2"
+                                     Kind="Heart"
+                                     VerticalAlignment="Center"
+                                     Foreground="Red" />
         </Grid>
         <Grid Grid.Row="2">
             <!--<TextBox x:Name="txtUserName"

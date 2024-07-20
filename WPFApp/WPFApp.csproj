@@ -13,6 +13,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="fptLogo.png" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ApplicationDefinition Update="App.xaml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </ApplicationDefinition>
