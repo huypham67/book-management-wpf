@@ -1,0 +1,570 @@
+﻿<Window x:Class="WPFApp.User.UserWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WPFApp"
+        mc:Ignorable="d"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        Title="Customer Window"
+        Height="550"
+        Width="1400"
+        ResizeMode="NoResize">
+    <Grid>
+        <!--<TextBlock Text="{Binding CustomerFullName}"></TextBlock>-->
+        <materialDesign:Card>
+            <TabControl materialDesign:NavigationRailAssist.ShowSelectionBackground="True"
+                        SnapsToDevicePixels="True"
+                        Style="{StaticResource MaterialDesignNavigationRailTabControl}"
+                        TabStripPlacement="Left">
+                <TabItem>
+                    <TabItem.Header>
+                        <StackPanel Width="auto"
+                                    Height="auto">
+
+                            <materialDesign:PackIcon Width="24"
+                                                     Height="24"
+                                                     HorizontalAlignment="Center"
+                                                     Kind="Home" />
+                            <TextBlock HorizontalAlignment="Center"
+                                       Text="Home" />
+                        </StackPanel>
+                    </TabItem.Header>
+                    <StackPanel Margin="16">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition></ColumnDefinition>
+                                <ColumnDefinition></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Grid.Column="0"
+                                       Margin="0,0,0,8"
+                                       Style="{StaticResource MaterialDesignHeadline5TextBlock}"><Run Text="My Account" /><LineBreak /><Run /></TextBlock>
+                            <Grid Grid.Column="1">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="3*"></ColumnDefinition>
+                                    <ColumnDefinition></ColumnDefinition>
+
+                                </Grid.ColumnDefinitions>
+
+                                <Button Grid.Column="0"
+                                        VerticalAlignment="Top"
+                                        HorizontalAlignment="Right"
+                                        Width="80"
+                                        Content="Update"
+                                        IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
+                                        Style="{StaticResource MaterialDesignPaperButton}"
+                                        ToolTip="Resource name: MaterialDesignPaperButton"
+                                         />
+                                <Button Grid.Column="1"
+                                        VerticalAlignment="Top"
+                                        HorizontalAlignment="Right"
+                                        Width="80"
+                                        Content="Log out"
+                                        IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
+                                        Style="{StaticResource MaterialDesignPaperButton}"
+                                        ToolTip="Resource name: MaterialDesignPaperButton"
+                                         />
+                            </Grid>
+                        </Grid>
+                        <materialDesign:Card Width="600"
+                                             Padding="8">
+
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition></RowDefinition>
+                                    <RowDefinition></RowDefinition>
+                                    <RowDefinition></RowDefinition>
+                                    <RowDefinition></RowDefinition>
+                                    <RowDefinition></RowDefinition>
+                                    <RowDefinition></RowDefinition>
+                                    <RowDefinition></RowDefinition>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition></ColumnDefinition>
+                                    <ColumnDefinition></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+
+                                <!-- Full Name -->
+                                <Grid Grid.Row="0"
+                                      Grid.Column="0"
+                                      Margin="10">
+                                    <TextBlock FontSize="15">Full Name:</TextBlock>
+                                </Grid>
+                                <Grid Grid.Row="0"
+                                      Grid.Column="1"
+                                      Margin="10">
+                                    <TextBlock Text="{Binding Customer.CustomerFullName}" />
+                                </Grid>
+
+                                <!-- Customer ID -->
+                                <Grid Grid.Row="1"
+                                      Grid.Column="0"
+                                      Margin="10">
+                                    <TextBlock FontSize="15">Customer ID:</TextBlock>
+                                </Grid>
+                                <Grid Grid.Row="1"
+                                      Grid.Column="1"
+                                      Margin="10">
+                                    <TextBlock Text="{Binding Customer.CustomerID}" />
+                                </Grid>
+
+                                <!-- Telephone -->
+                                <Grid Grid.Row="2"
+                                      Grid.Column="0"
+                                      Margin="10">
+                                    <TextBlock FontSize="15">Telephone:</TextBlock>
+                                </Grid>
+                                <Grid Grid.Row="2"
+                                      Grid.Column="1"
+                                      Margin="10">
+                                    <TextBlock Text="{Binding Customer.Telephone}" />
+                                </Grid>
+
+                                <!-- Email Address -->
+                                <Grid Grid.Row="3"
+                                      Grid.Column="0"
+                                      Margin="10">
+                                    <TextBlock FontSize="15">Email Address:</TextBlock>
+                                </Grid>
+                                <Grid Grid.Row="3"
+                                      Grid.Column="1"
+                                      Margin="10">
+                                    <TextBlock Text="{Binding Customer.EmailAddress}" />
+                                </Grid>
+
+                                <!-- Birthday -->
+                                <Grid Grid.Row="4"
+                                      Grid.Column="0"
+                                      Margin="10">
+                                    <TextBlock FontSize="15">Birthday:</TextBlock>
+                                </Grid>
+                                <Grid Grid.Row="4"
+                                      Grid.Column="1"
+                                      Margin="10">
+                                    <TextBlock Text="{Binding Customer.CustomerBirthday, StringFormat='{}{0:dd/MM/yyyy}'}" />
+                                </Grid>
+
+                                <!-- Customer Status -->
+                                <Grid Grid.Row="5"
+                                      Grid.Column="0"
+                                      Margin="10">
+                                    <TextBlock FontSize="15">Customer Status:</TextBlock>
+                                </Grid>
+                                <Grid Grid.Row="5"
+                                      Grid.Column="1"
+                                      Margin="10">
+                                    <TextBlock Text="{Binding Customer.CustomerStatus}"
+                                               Height="40"
+                                               VerticalAlignment="Bottom" />
+                                </Grid>
+
+                                <!-- Password -->
+                                <Grid Grid.Row="6"
+                                      Grid.Column="0">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="9*" />
+                                        <ColumnDefinition Width="25*" />
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock FontSize="15"
+                                               Grid.ColumnSpan="2"
+                                               Margin="10">Password:</TextBlock>
+                                </Grid>
+                                <Grid Grid.Row="6"
+                                      Grid.Column="1"
+                                      Margin="10">
+                                    <TextBlock Text="{Binding Customer.Password}" />
+                                </Grid>
+
+                            </Grid>
+                        </materialDesign:Card>
+                    </StackPanel>
+                </TabItem>
+                <TabItem>
+                    <TabItem.Header>
+                        <StackPanel Width="auto"
+                                    Height="auto">
+
+                            <materialDesign:PackIcon Width="24"
+                                                     Height="24"
+                                                     HorizontalAlignment="Center"
+                                                     Kind="Account" />
+                            <TextBlock HorizontalAlignment="Center"
+                                       Text="Profile" />
+                        </StackPanel>
+                    </TabItem.Header>
+                    <StackPanel Margin="16">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="6*"></ColumnDefinition>
+                                <ColumnDefinition Width="5*"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Grid.Column="0"
+                                       Margin="0,0,0,8"
+                                       Style="{StaticResource MaterialDesignHeadline5TextBlock}"><Run Text="My Profile" /><LineBreak /><Run /></TextBlock>
+                            <Grid Grid.Column="1">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition></ColumnDefinition>
+                                    <ColumnDefinition></ColumnDefinition>
+                                    <ColumnDefinition></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <Button VerticalAlignment="Top"
+                                        HorizontalAlignment="Center"
+                                        Width="151"
+                                        Content="Change password"
+                                        IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
+                                        Style="{StaticResource MaterialDesignPaperButton}"
+                                        ToolTip="Resource name: MaterialDesignPaperButton"
+                                         />
+                                <Button Grid.Column="1"
+                                        VerticalAlignment="Top"
+                                        HorizontalAlignment="Right"
+                                        Width="80"
+                                        Content="Update"
+                                        IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
+                                        Style="{StaticResource MaterialDesignPaperButton}"
+                                        ToolTip="Resource name: MaterialDesignPaperButton"
+                                         />
+                                <Button Grid.Column="2"
+                                        VerticalAlignment="Top"
+                                        HorizontalAlignment="Right"
+                                        Width="80"
+                                        Content="Log out"
+                                        IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
+                                        Style="{StaticResource MaterialDesignPaperButton}"
+                                        ToolTip="Resource name: MaterialDesignPaperButton"
+                                         />
+                            </Grid>
+                        </Grid>
+                        <materialDesign:Card Width="700"
+                                             Padding="8">
+
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition></RowDefinition>
+                                    <RowDefinition></RowDefinition>
+                                    <RowDefinition></RowDefinition>
+                                    <RowDefinition></RowDefinition>
+                                    <RowDefinition></RowDefinition>
+                                    <RowDefinition></RowDefinition>
+                                    <RowDefinition></RowDefinition>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="3*"></ColumnDefinition>
+                                    <ColumnDefinition Width="7*"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+
+                                <!-- Full Name -->
+                                <Grid Grid.Row="0"
+                                      Grid.Column="0"
+                                      Margin="10">
+                                    <TextBlock FontSize="15">Full Name</TextBlock>
+                                </Grid>
+                                <Border Grid.Row="0"
+                                        Grid.Column="1"
+                                        Margin="10"
+                                        Style="{StaticResource OrangeBorderStyle}">
+                                    <Grid>
+                                        <TextBlock Text="{Binding FullName}" />
+                                    </Grid>
+                                </Border>
+
+
+
+                                <!-- Date Of Birth -->
+                                <Grid Grid.Row="1"
+                                      Grid.Column="0"
+                                      Margin="10">
+                                    <TextBlock FontSize="15">Date Of Birth</TextBlock>
+                                </Grid>
+                                <Border Grid.Row="1"
+                                        Grid.Column="1"
+                                        Margin="10"
+                                        Style="{StaticResource OrangeBorderStyle}">
+                                    <Grid>
+                                        <DatePicker SelectedDate="{Binding DateOfBirth}" />
+                                    </Grid>
+                                </Border>
+
+                                <!-- Email Address -->
+                                <Grid Grid.Row="2"
+                                      Grid.Column="0"
+                                      Margin="10">
+                                    <TextBlock FontSize="15">Email</TextBlock>
+                                </Grid>
+                                <Border Grid.Row="2"
+                                        Grid.Column="1"
+                                        Margin="10"
+                                        Style="{StaticResource OrangeBorderStyle}">
+                                    <Grid>
+                                        <TextBlock Text="{Binding FullName}" />
+                                    </Grid>
+                                </Border>
+
+                                <!-- Phone Number -->
+                                <Grid Grid.Row="3"
+                                      Grid.Column="0"
+                                      Margin="10">
+                                    <TextBlock FontSize="15">Phone Number</TextBlock>
+                                </Grid>
+                                <Border Grid.Row="3"
+                                        Grid.Column="1"
+                                        Margin="10"
+                                        Style="{StaticResource OrangeBorderStyle}">
+                                    <Grid>
+                                        <TextBlock Text="{Binding FullName}" />
+                                    </Grid>
+                                </Border>
+
+                                <!-- Customer Status -->
+                                <Grid Grid.Row="4"
+                                      Grid.Column="0"
+                                      Margin="10">
+                                    <TextBlock FontSize="15">Role</TextBlock>
+                                </Grid>
+                                <Border Grid.Row="4"
+                                        Grid.Column="1"
+                                        Margin="10"
+                                        Style="{StaticResource OrangeBorderStyle}">
+                                    <Grid>
+                                        <TextBlock Text="{Binding FullName}" />
+                                    </Grid>
+                                </Border>
+
+                            </Grid>
+                        </materialDesign:Card>
+                    </StackPanel>
+                </TabItem>
+                <TabItem>
+                    <TabItem.Header>
+                        <StackPanel Width="auto"
+                                    Height="auto">
+                            <materialDesign:PackIcon Width="24"
+                                                     Height="24"
+                                                     HorizontalAlignment="Center"
+                                                     Kind="Library" />
+                            <TextBlock HorizontalAlignment="Center"
+                                       Text="All books" />
+                        </StackPanel>
+                    </TabItem.Header>
+                    <StackPanel Margin="16">
+                        <TextBlock Margin="0,0,0,8"
+                                   Style="{StaticResource MaterialDesignHeadline5TextBlock}"
+                                   Text="All books" />
+                        <materialDesign:Card Width="700"
+                                             Padding="8"
+                                             UniformCornerRadius="6">
+                        </materialDesign:Card>
+                        <ScrollViewer HorizontalScrollBarVisibility="Auto">
+                            <DataGrid CanUserAddRows="True"
+                                      CanUserDeleteRows="True"
+                                      x:Name="dtBookingDetails"
+                                      SelectionMode="Extended"
+                                      SelectionUnit="FullRow"
+                                      AutoGenerateColumns="False"
+                                      d:ItemsSource="{d:SampleData ItemCount=5}"
+                                      IsReadOnly="True">
+                                <DataGrid.Columns>
+                                    <DataGridTextColumn Header="ID"
+                                                        Binding="{Binding BookId}" />
+                                    <DataGridTextColumn Header="Book Name"
+                                                        Binding="{Binding BookName}" />
+                                    <DataGridTextColumn Header="Description"
+                                                        Binding="{Binding BookDescription}" />
+                                    <DataGridTextColumn Header="Author"
+                                                        Binding="{Binding Author.AuthorName}" />
+                                    <DataGridTextColumn Header="Publication Date"
+                                                        Binding="{Binding PublicationDate}" />
+                                    <DataGridTextColumn Header="Unit Price"
+                                                        Binding="{Binding Price}" />
+                                    <DataGridTextColumn Header="Quantity"
+                                                        Binding="{Binding Quantity}" />
+                                    <DataGridTextColumn Header="Category"
+                                                        Binding="{Binding BookCategory.BookGenreType}" />
+                                    <DataGridTextColumn Header="Publisher"
+                                                        Binding="{Binding Publisher.PublisherName}" />
+                                    <DataGridTemplateColumn>
+                                        <DataGridTemplateColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <Button Content="ADD TO CART"
+                                                        Command="{Binding AddToCartCommand}"
+                                                        CommandParameter="{Binding}" />
+                                            </DataTemplate>
+                                        </DataGridTemplateColumn.CellTemplate>
+                                    </DataGridTemplateColumn>
+                                </DataGrid.Columns>
+                            </DataGrid>
+                        </ScrollViewer>
+                    </StackPanel>
+                </TabItem>
+
+
+
+                <TabItem>
+                    <TabItem.Header>
+                        <StackPanel Width="auto"
+                                    Height="auto">
+                            <materialDesign:PackIcon Width="24"
+                                                     Height="24"
+                                                     HorizontalAlignment="Center"
+                                                     Kind="ShoppingCart" />
+                            <TextBlock HorizontalAlignment="Center"
+                                       Text="Cart" />
+                        </StackPanel>
+                    </TabItem.Header>
+                    <StackPanel Margin="16">
+                        <TextBlock Margin="0,0,0,8"
+                                   Style="{StaticResource MaterialDesignHeadline5TextBlock}"
+                                   Text="Your Cart" />
+                        <materialDesign:Card Width="700"
+                                         Padding="8"
+                                         UniformCornerRadius="6">
+                        </materialDesign:Card>
+                        <ScrollViewer HorizontalScrollBarVisibility="Auto">
+                            <DataGrid CanUserAddRows="True"
+                                      CanUserDeleteRows="True"
+                                      x:Name="dtBookingDetails2"
+                                      SelectionMode="Extended"
+                                      SelectionUnit="FullRow"
+                                      AutoGenerateColumns="False"
+                                      d:ItemsSource="{d:SampleData ItemCount=5}"
+                                      IsReadOnly="True"
+                                      IsSynchronizedWithCurrentItem="True">
+                                <DataGrid.Columns>
+                                    <DataGridTemplateColumn>
+                                        <DataGridTemplateColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <CheckBox IsChecked="{Binding IsSelected}" />
+                                            </DataTemplate>
+                                        </DataGridTemplateColumn.CellTemplate>
+                                    </DataGridTemplateColumn>
+                                    <DataGridTextColumn Header="ID"
+                                                        Binding="{Binding BookId}" />
+                                    <DataGridTextColumn Header="Book Name"
+                                                        Binding="{Binding BookName}" />
+                                    <DataGridTextColumn Header="Author"
+                                                        Binding="{Binding Author.AuthorName}" />
+                                    <DataGridTextColumn Header="Category"
+                                                        Binding="{Binding BookCategory.BookGenreType}" />
+                                    <DataGridTextColumn Header="Publisher"
+                                            Binding="{Binding Publisher.PublisherName}" />
+                                    <DataGridTemplateColumn Header="Quantity">
+                                        <DataGridTemplateColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                                                    <Button Content="-" Command="{Binding DecreaseQuantityCommand}" CommandParameter="{Binding}" Width="20" Height="20" Padding="0" Margin="0,0,2,0"/>
+                                                    <TextBlock Text="{Binding Quantity}" VerticalAlignment="Center" Margin="2,0,2,0"/>
+                                                    <Button Content="+" Command="{Binding IncreaseQuantityCommand}" CommandParameter="{Binding}" Width="20" Height="20" Padding="0" Margin="2,0,0,0"/>
+                                                </StackPanel>
+                                            </DataTemplate>
+                                        </DataGridTemplateColumn.CellTemplate>
+                                    </DataGridTemplateColumn>
+                                    <DataGridTextColumn Header="Total Price"
+                                                        Binding="{Binding Price}" />
+                                    <DataGridTemplateColumn Header="Actions">
+                                        <DataGridTemplateColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <Button Command="{Binding DeleteCommand}"
+                                                        CommandParameter="{Binding}"
+                                                        Background="#FF4646"
+                                                        Foreground="White"
+                                                        Padding="4,2"
+                                                        Width="28"
+                                                        Height="28">
+                                                    <StackPanel Orientation="Horizontal">
+                                                        <materialDesign:PackIcon Kind="Delete" />
+                                                    </StackPanel>
+                                                </Button>
+                                            </DataTemplate>
+                                        </DataGridTemplateColumn.CellTemplate>
+                                    </DataGridTemplateColumn>
+                                </DataGrid.Columns>
+                            </DataGrid>
+                        </ScrollViewer>
+                        <StackPanel Orientation="Horizontal"
+                                    HorizontalAlignment="Right"
+                                    Margin="0,16,12,0">
+                            <TextBlock Text="Total Price: "
+                                       VerticalAlignment="Center"
+                                       FontSize="24"
+                                       FontWeight="Bold"
+                                       Margin="0,0,12,0" />
+                            <TextBlock FontSize="24"
+                                       x:Name="txtTotalPrice"
+                                       VerticalAlignment="Center"
+                                       Margin="0,0,12,0"
+                                       Text="150$" />
+                            <Button Content="ORDER"
+                                    Command="{Binding AddToCartCommand}"
+                                    CommandParameter="{Binding}" />
+                        </StackPanel>
+                    </StackPanel>
+                </TabItem>
+                <TabItem>
+                    <TabItem.Header>
+                        <StackPanel Width="auto"
+                                    Height="auto">
+                            <materialDesign:PackIcon Width="24"
+                                                     Height="24"
+                                                     HorizontalAlignment="Center"
+                                                     Kind="History" />
+                            <TextBlock HorizontalAlignment="Center"
+                                       Text="History" />
+                        </StackPanel>
+                    </TabItem.Header>
+                    <StackPanel Margin="16">
+                        <TextBlock Margin="0,0,0,8"
+                                   Style="{StaticResource MaterialDesignHeadline5TextBlock}"
+                                   Text="Order history" />
+                        <materialDesign:Card Width="700"
+                                             Padding="8"
+                                             UniformCornerRadius="6">
+
+                        </materialDesign:Card>
+                        <ScrollViewer HorizontalScrollBarVisibility="Auto">
+                            <DataGrid CanUserAddRows="True"
+                                      CanUserDeleteRows="True"
+                                      x:Name="dtBookingDetails24"
+                                      SelectionMode="Extended"
+                                      SelectionUnit="FullRow"
+                                      AutoGenerateColumns="False"
+                                      d:ItemsSource="{d:SampleData ItemCount=5}"
+                                      IsReadOnly="True">
+                                <DataGrid.Columns>
+                                    <DataGridTextColumn Header="Order ID"
+                                                        Binding="{Binding OrderId}" />
+                                    <DataGridTextColumn Header="Order Date"
+                                                        Binding="{Binding OrderDate}" />
+                                    <DataGridTextColumn Header="Quantity"
+                                                        Binding="{Binding BookingReservation.BookingDate}" />
+                                    <DataGridTextColumn Header="Total Price"
+                                                        Binding="{Binding StartDate}" />
+                                    <DataGridTextColumn Header="Status"
+                                                        Binding="{Binding StartDate}" />
+                                    <DataGridTemplateColumn>
+                                        <DataGridTemplateColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <Button Command="{Binding ViewCommand}"
+                                                        CommandParameter="{Binding}"
+                                                        Foreground="Orange"
+                                                        Background="Transparent"
+                                                        BorderBrush="Transparent">
+                                                    <materialDesign:PackIcon Kind="Eye"
+                                                                             Width="16"
+                                                                             Height="16"
+                                                                             VerticalAlignment="Center" />
+                                                </Button>
+                                            </DataTemplate>
+                                        </DataGridTemplateColumn.CellTemplate>
+                                    </DataGridTemplateColumn>
+                                </DataGrid.Columns>
+                            </DataGrid>
+                        </ScrollViewer>
+
+                    </StackPanel>
+                </TabItem>
+
+
+            </TabControl>
+        </materialDesign:Card>
+    </Grid>
+</Window>
