@@ -38,22 +38,12 @@
                                 <ColumnDefinition></ColumnDefinition>
                                 <ColumnDefinition></ColumnDefinition>
                             </Grid.ColumnDefinitions>
-                            <TextBlock Grid.Column="0"
-                                       Margin="0,0,0,8"
-                                       Style="{StaticResource MaterialDesignHeadline5TextBlock}"
-                                       Text="All books" />
                             <Grid Grid.Column="1"
                                   HorizontalAlignment="Right">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition></ColumnDefinition>
                                     <ColumnDefinition></ColumnDefinition>
                                 </Grid.ColumnDefinitions>
-                                <Button Grid.Column="0"
-                                        IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
-                                        Style="{StaticResource MaterialDesignFloatingActionMiniSecondaryLightButton}"
-                                        ToolTip="MaterialDesignFloatingActionMiniSecondaryLightButton">
-                                    <materialDesign:PackIcon Kind="Plus" />
-                                </Button>
                                 <Button Grid.Column="1"
                                         Width="80"
                                         Margin="10"
@@ -177,7 +167,7 @@
                         <Grid Grid.Column="0">
                             <TextBlock Margin="0,0,0,8"
                                        Style="{StaticResource MaterialDesignHeadline5TextBlock}"
-                                       Text="Book Category" />
+                                       Text="Book Category List" />
                             <Grid Grid.Column="1"
                                   HorizontalAlignment="Right">
                                 <Grid.ColumnDefinitions>
@@ -245,7 +235,7 @@
                         <Grid Grid.Column="0">
                             <TextBlock Margin="0,0,0,8"
                                        Style="{StaticResource MaterialDesignHeadline5TextBlock}"
-                                       Text="Statics order" />
+                                       Text="Order List" />
                             <Grid Grid.Column="1"
                                   HorizontalAlignment="Right">
                                 <Grid.ColumnDefinitions>
@@ -272,16 +262,18 @@
                                       d:ItemsSource="{d:SampleData ItemCount=5}"
                                       IsReadOnly="True">
                                 <DataGrid.Columns>
-                                    <DataGridTextColumn Header="OrderId"
-                                                        Binding="{Binding BookingReservationID}" />
+                                    <DataGridTextColumn Header="ID"
+                                                        Binding="{Binding OrderId}" />
                                     <DataGridTextColumn Header="OrderDate"
-                                                        Binding="{Binding RoomInformation.RoomNumber}" />
+                                                        Binding="{Binding OrderDate}" />
                                     <DataGridTextColumn Header="Customer Name"
-                                                        Binding="{Binding BookingReservation.BookingDate}" />
+                                                        Binding="{Binding FullName}" />
                                     <DataGridTextColumn Header="Quantity"
-                                                        Binding="{Binding RoomInformation.RoomNumber}" />
+                                                        Binding="{Binding Quantity}" />
                                     <DataGridTextColumn Header="Total price"
-                                                        Binding="{Binding BookingReservation.BookingDate}" />
+                                                        Binding="{Binding TotalPrice}" />
+                                    <DataGridTextColumn Header="Status "
+                                                        Binding="{Binding OrderStatus}" />
                                     <DataGridTemplateColumn>
                                         <DataGridTemplateColumn.CellTemplate>
                                             <DataTemplate>
@@ -302,10 +294,10 @@
                                         <DataGridTemplateColumn.CellTemplate>
                                             <DataTemplate>
                                                 <StackPanel Orientation="Horizontal">
-                                                    <Button Content="Decline"
+                                                    <Button Content="Edit"
                                                             CommandParameter="{Binding BookingReservationID}"
                                                             Margin="5" />
-                                                    <Button Content="Confirm"
+                                                    <Button Content="Delete"
                                                             CommandParameter="{Binding BookingReservationID}"
                                                             Margin="5" />
                                                 </StackPanel>
@@ -334,7 +326,7 @@
                         <Grid Grid.Column="0">
                             <TextBlock Margin="0,0,0,8"
                                        Style="{StaticResource MaterialDesignHeadline5TextBlock}"
-                                       Text="All user" />
+                                       Text="All users" />
                             <Grid Grid.Column="1"
                                   HorizontalAlignment="Right">
                                 <Grid.ColumnDefinitions>
