@@ -11,8 +11,10 @@
         Width="1250"
         ResizeMode="NoResize">
     <Grid>
+
         <!--<TextBlock Text="{Binding CustomerFullName}"></TextBlock>-->
         <materialDesign:Card>
+
             <TabControl materialDesign:NavigationRailAssist.ShowSelectionBackground="True"
                         SnapsToDevicePixels="True"
                         Style="{StaticResource MaterialDesignNavigationRailTabControl}"
@@ -32,149 +34,149 @@
                     </TabItem.Header>
                     <StackPanel Margin="16">
                         <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition></ColumnDefinition>
-                                <ColumnDefinition></ColumnDefinition>
-                            </Grid.ColumnDefinitions>
-                            <TextBlock Grid.Column="0"
-                                       Margin="0,0,0,8"
-                                       Style="{StaticResource MaterialDesignHeadline5TextBlock}"><Run Text="My Account" /><LineBreak /><Run /></TextBlock>
-                            <Grid Grid.Column="1">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="3*"></ColumnDefinition>
-                                    <ColumnDefinition></ColumnDefinition>
+                            <Grid.RowDefinitions>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <Grid Grid.Row="0">
+                                <TextBlock Margin="69,0,505,0"
+                                           FontWeight="Bold"
+                                           FontSize="50"
+                                           Style="{StaticResource MaterialDesignHeadline5TextBlock}"
+                                           Height="133"
+                                           VerticalAlignment="Center">
+                                            <Run Text="Enigma Store" />
+                                            <LineBreak />
+                                            <Run />
 
-                                </Grid.ColumnDefinitions>
+                                    <TextBlock.Foreground>
+                                        <LinearGradientBrush StartPoint="0,0"
+                                                             EndPoint="1,0">
+                                            <GradientStop Color="Orange"
+                                                          Offset="0.0" />
+                                            <GradientStop Color="OrangeRed"
+                                                          Offset="1.0" />
+                                        </LinearGradientBrush>
+                                    </TextBlock.Foreground>
 
-                                <Button Grid.Column="0"
-                                        VerticalAlignment="Top"
-                                        HorizontalAlignment="Right"
-                                        Width="80"
-                                        Content="Update"
-                                        IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
-                                        Style="{StaticResource MaterialDesignPaperButton}"
-                                        ToolTip="Resource name: MaterialDesignPaperButton" />
-                                <Button Grid.Column="1"
-                                        VerticalAlignment="Top"
-                                        HorizontalAlignment="Right"
-                                        Width="80"
-                                        Content="Log out"
-                                        IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
-                                        Style="{StaticResource MaterialDesignPaperButton}"
-                                        ToolTip="Resource name: MaterialDesignPaperButton" />
+                                </TextBlock>
+                                <Image Source="/book.png"
+                                       Width="86"
+                                       Height="70"
+                                       Margin="-14,4,1074,67" />
                             </Grid>
+
+                            <Grid Grid.Row="1">
+                                <Image Source="/enigma.png"
+                                       Width="200"
+                                       Height="200"
+                                       Margin="12,0,934,97" />
+                                <materialDesign:PackIcon Width="24"
+                                                         Height="24"
+                                                         Kind="ShoppingCart"
+                                                         RenderTransformOrigin="5.583,10.341"
+                                                         Margin="206,200,0,0" />
+                                <Image Source="/Book1.png"
+                                       Width="200"
+                                       Height="200"
+                                       Margin="294,0,652,97" />
+                                <Image Source="/Book2.png"
+                                       Width="200"
+                                       Height="200"
+                                       Margin="562,0,384,97" />
+                                <Image Source="/B4.png"
+                                       Margin="900,0,46,97" />
+                                <materialDesign:PackIcon Width="24"
+                                                         Height="24"
+                                                         Kind="ShoppingCart"
+                                                         RenderTransformOrigin="5.583,10.341"
+                                                         Margin="494,205,0,0" />
+                                <materialDesign:PackIcon Width="24"
+                                                         Height="24"
+                                                         Kind="ShoppingCart"
+                                                         RenderTransformOrigin="5.583,10.341"
+                                                         Margin="774,205,0,0" />
+                                <materialDesign:PackIcon Width="24"
+                                                         Height="24"
+                                                         Kind="ShoppingCart"
+                                                         RenderTransformOrigin="5.583,10.341"
+                                                         Margin="1088,200,0,0" />
+                                <TextBox HorizontalAlignment="Left"
+                                         Height="24"
+                                         Margin="17,200,0,0"
+                                         TextWrapping="Wrap"
+                                         VerticalAlignment="Top"
+                                         TextAlignment="Center"
+                                         Text="ENIGMA Book"
+                                         Width="189" />
+                                <TextBox HorizontalAlignment="Left"
+                                         Height="24"
+                                         Margin="17,263,0,0"
+                                         TextWrapping="Wrap"
+                                         TextAlignment="Center"
+                                         VerticalAlignment="Top"
+                                         Text="500.000$"
+                                         Width="189" />
+                                <TextBox HorizontalAlignment="Left"
+                                         Height="24"
+                                         Margin="300,205,0,0"
+                                         TextWrapping="Wrap"
+                                         TextAlignment="Center"
+                                         Text="Dark Spells Book"
+                                         VerticalAlignment="Top"
+                                         Width="189" />
+                                <TextBox HorizontalAlignment="Left"
+                                         Height="24"
+                                         Margin="300,263,0,0"
+                                         TextWrapping="Wrap"
+                                         TextAlignment="Center"
+                                         Text=" 600.000"
+                                         VerticalAlignment="Top"
+                                         Width="188" />
+                                <TextBox HorizontalAlignment="Left"
+                                         Height="24"
+                                         Margin="899,200,0,0"
+                                         TextAlignment="Center"
+                                         Text="C++ Book"
+                                         TextWrapping="Wrap"
+                                         VerticalAlignment="Top"
+                                         Width="189" />
+
+                                <TextBox HorizontalAlignment="Left"
+                                         Height="24"
+                                         Margin="584,205,0,0"
+                                         TextWrapping="Wrap"
+                                         TextAlignment="Center"
+                                         Text="RICH DAD Book"
+                                         VerticalAlignment="Top"
+                                         Width="190" />
+                                <TextBox HorizontalAlignment="Left"
+                                         Height="24"
+                                         Margin="584,263,0,0"
+                                         TextAlignment="Center"
+                                         Text="1.000.000"
+                                         TextWrapping="Wrap"
+                                         VerticalAlignment="Top"
+                                         Width="190" />
+                                <TextBox HorizontalAlignment="Left"
+                                         Height="24"
+                                         Margin="899,263,0,0"
+                                         TextAlignment="Center"
+                                         Text="700.000"
+                                         TextWrapping="Wrap"
+                                         VerticalAlignment="Top"
+                                         Width="189" />
+                                
+                            </Grid>
+
+                            <Button Width="100"
+                                    Content="Logout"
+                                    Margin="1020,201,26,-196"
+                                    Grid.Row="1" />
+
+
                         </Grid>
-                        <materialDesign:Card Width="1300"
-                                             Padding="8">
 
-                            <Grid>
-                                <Grid.RowDefinitions>
-                                    <RowDefinition></RowDefinition>
-                                    <RowDefinition></RowDefinition>
-                                    <RowDefinition></RowDefinition>
-                                    <RowDefinition></RowDefinition>
-                                    <RowDefinition></RowDefinition>
-                                    <RowDefinition></RowDefinition>
-                                    <RowDefinition></RowDefinition>
-                                </Grid.RowDefinitions>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition></ColumnDefinition>
-                                    <ColumnDefinition></ColumnDefinition>
-                                </Grid.ColumnDefinitions>
-
-                                <!-- Full Name -->
-                                <Grid Grid.Row="0"
-                                      Grid.Column="0"
-                                      Margin="10">
-                                    <TextBlock FontSize="15">Full Name:</TextBlock>
-                                </Grid>
-                                <Grid Grid.Row="0"
-                                      Grid.Column="1"
-                                      Margin="10">
-                                    <TextBlock Text="{Binding Customer.CustomerFullName}" />
-                                </Grid>
-
-                                <!-- Customer ID -->
-                                <Grid Grid.Row="1"
-                                      Grid.Column="0"
-                                      Margin="10">
-                                    <TextBlock FontSize="15">Customer ID:</TextBlock>
-                                </Grid>
-                                <Grid Grid.Row="1"
-                                      Grid.Column="1"
-                                      Margin="10">
-                                    <TextBlock Text="{Binding Customer.CustomerID}" />
-                                </Grid>
-
-                                <!-- Telephone -->
-                                <Grid Grid.Row="2"
-                                      Grid.Column="0"
-                                      Margin="10">
-                                    <TextBlock FontSize="15">Telephone:</TextBlock>
-                                </Grid>
-                                <Grid Grid.Row="2"
-                                      Grid.Column="1"
-                                      Margin="10">
-                                    <TextBlock Text="{Binding Customer.Telephone}" />
-                                </Grid>
-
-                                <!-- Email Address -->
-                                <Grid Grid.Row="3"
-                                      Grid.Column="0"
-                                      Margin="10">
-                                    <TextBlock FontSize="15">Email Address:</TextBlock>
-                                </Grid>
-                                <Grid Grid.Row="3"
-                                      Grid.Column="1"
-                                      Margin="10">
-                                    <TextBlock Text="{Binding Customer.EmailAddress}" />
-                                </Grid>
-
-                                <!-- Birthday -->
-                                <Grid Grid.Row="4"
-                                      Grid.Column="0"
-                                      Margin="10">
-                                    <TextBlock FontSize="15">Birthday:</TextBlock>
-                                </Grid>
-                                <Grid Grid.Row="4"
-                                      Grid.Column="1"
-                                      Margin="10">
-                                    <TextBlock Text="{Binding Customer.CustomerBirthday, StringFormat='{}{0:dd/MM/yyyy}'}" />
-                                </Grid>
-
-                                <!-- Customer Status -->
-                                <Grid Grid.Row="5"
-                                      Grid.Column="0"
-                                      Margin="10">
-                                    <TextBlock FontSize="15">Customer Status:</TextBlock>
-                                </Grid>
-                                <Grid Grid.Row="5"
-                                      Grid.Column="1"
-                                      Margin="10">
-                                    <TextBlock Text="{Binding Customer.CustomerStatus}"
-                                               Height="40"
-                                               VerticalAlignment="Bottom" />
-                                </Grid>
-
-                                <!-- Password -->
-                                <Grid Grid.Row="6"
-                                      Grid.Column="0">
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="9*" />
-                                        <ColumnDefinition Width="25*" />
-                                    </Grid.ColumnDefinitions>
-                                    <TextBlock FontSize="15"
-                                               Grid.ColumnSpan="2"
-                                               Margin="10">Password:</TextBlock>
-                                </Grid>
-                                <Grid Grid.Row="6"
-                                      Grid.Column="1"
-                                      Margin="10">
-                                    <TextBlock Text="{Binding Customer.Password}" />
-                                </Grid>
-
-                            </Grid>
-                        </materialDesign:Card>
                     </StackPanel>
                 </TabItem>
                 <TabItem>
