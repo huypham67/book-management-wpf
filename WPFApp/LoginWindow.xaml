@@ -25,20 +25,22 @@
         </Grid.RowDefinitions>
         <Grid Grid.Row="1">
             <Grid.RowDefinitions>
-                <RowDefinition Height="2*"></RowDefinition>
-                <RowDefinition Height="2*"></RowDefinition>
+                <RowDefinition Height="3*"></RowDefinition>
+                <RowDefinition Height="3*"></RowDefinition>
                 <RowDefinition></RowDefinition>
 
             </Grid.RowDefinitions>
-            <Image Source="/fptLogo.png"
-                   Width="180"
-                   Height="60"></Image>
+            <Image Source="/book.png"
+                   Width="360"
+                   Height="70"
+                   Margin="220,0,220,49"
+                   Grid.RowSpan="2" />
             <TextBlock Grid.Row="1"
                        HorizontalAlignment="Center"
                        FontSize="40"
                        Style="{StaticResource MaterialDesignHeadline2TextBlock}"
                        FontWeight="Light"
-                       Text="Book Management">
+                       Text="Enigma Store">
                 <TextBlock.Foreground>
                     <LinearGradientBrush StartPoint="0,0"
                                          EndPoint="1,0">
@@ -48,12 +50,9 @@
                                       Offset="1.0" />
                     </LinearGradientBrush>
                 </TextBlock.Foreground>
-            </TextBlock>
 
-            <materialDesign:PackIcon Grid.Row="2"
-                                     Kind="Heart"
-                                     VerticalAlignment="Center"
-                                     Foreground="Red" />
+            </TextBlock>
+            
         </Grid>
         <Grid Grid.Row="2">
             <!--<TextBox x:Name="txtUserName"
@@ -122,8 +121,7 @@
                     <ColumnDefinition></ColumnDefinition>
                 </Grid.ColumnDefinitions>
                 <Grid Grid.Column="0">
-                    <Button 
-                        Name="btnSignIn"
+                    <Button Name="btnSignIn"
                             Width="120"
                             Content="Sign in"
                             Background="Orange"
@@ -131,12 +129,11 @@
                             FontWeight="Bold"
                             IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
                             Style="{StaticResource MaterialDesignOutlinedDarkButton}"
-                            ToolTip="MaterialDesignOutlinedButton" Click="btnSignIn_Click"
-                             />
+                            ToolTip="MaterialDesignOutlinedButton"
+                            Click="btnSignIn_Click" />
                 </Grid>
                 <Grid Grid.Column="1">
-                    <Button 
-                        Name="btnCancel"
+                    <Button Name="btnCancel"
                             Width="120"
                             Content="Cancel"
                             Background="Orange"
@@ -144,8 +141,8 @@
                             FontWeight="Bold"
                             IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
                             Style="{StaticResource MaterialDesignOutlinedDarkButton}"
-                            ToolTip="MaterialDesignOutlinedButton" Click="btnCancel_Click"
-                            />
+                            ToolTip="MaterialDesignOutlinedButton"
+                            Click="btnCancel_Click" />
 
                 </Grid>
 

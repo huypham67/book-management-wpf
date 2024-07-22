@@ -9,10 +9,22 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="B3.png" />
+    <None Remove="Book2.png" />
+    <None Remove="enigma.png" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="MaterialDesignThemes" Version="5.1.0" />
   </ItemGroup>
 
   <ItemGroup>
+
+    <Resource Include="B3.png" />
+
+    <Resource Include="Book2.png" />
+
+    <Resource Include="enigma.png" />
 
     <Resource Include="fptLogo.png" />
 
