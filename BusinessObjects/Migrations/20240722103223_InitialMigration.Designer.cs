@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BusinessObjects.Migrations
 {
     [DbContext(typeof(BookManagementDbContext))]
-    [Migration("20240722043714_Initial")]
-    partial class Initial
+    [Migration("20240722103223_InitialMigration")]
+    partial class InitialMigration
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -264,6 +264,37 @@ namespace BusinessObjects.Migrations
                         });
                 });
 
+            modelBuilder.Entity("BusinessObjects.Models.BookCart", b =>
+                {
+                    b.Property<int>("BookId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("BookId"));
+
+                    b.Property<string>("AuthorName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("BookGenreType")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("BookName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PublisherName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Quantity")
+                        .HasColumnType("int");
+
+                    b.Property<decimal>("UnitPrice")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.HasKey("BookId");
+
+                    b.ToTable("BookCarts");
+                });
+
             modelBuilder.Entity("BusinessObjects.Models.BookCategory", b =>
                 {
                     b.Property<int>("BookCategoryId")
@@ -498,7 +529,7 @@ namespace BusinessObjects.Migrations
                         });
                 });
 
-            modelBuilder.Entity("BusinessObjects.Models.OrderDetailDto", b =>
+            modelBuilder.Entity("BusinessObjects.Models.OrderDetailView", b =>
                 {
                     b.Property<string>("CustomerName")
                         .HasColumnType("nvarchar(max)");
@@ -509,8 +540,8 @@ namespace BusinessObjects.Migrations
                     b.Property<int>("OrderId")
                         .HasColumnType("int");
 
-                    b.Property<string>("OrderStatus")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("OrderStatus")
+                        .HasColumnType("int");
 
                     b.Property<int>("Quantity")
                         .HasColumnType("int");

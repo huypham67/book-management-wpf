@@ -22,7 +22,7 @@
 
   <ItemGroup>
     <ApplicationDefinition Update="App.xaml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </ApplicationDefinition>
   </ItemGroup>
 

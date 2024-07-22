@@ -1,4 +1,6 @@
 ﻿using BusinessObjects.Models;
+using Repositories.BookCartRepositories;
+using Repositories.BookRepositories;
 using Repositories.UserRepositories;
 using System;
 using System.Collections.Generic;
@@ -22,13 +24,30 @@ namespace WPFApp.User
     /// </summary>
     public partial class UserWindow : Window
     {
+        private IBookRepository _bookRepository = new BookRepository();
         private IUserRepository _userRepository = new UserRepository();
+        private IBookCartRepository _bookCartRepository = new BookCartRepository();
         private UserAccount _userAccount;
         public UserWindow(UserAccount userAccount)
         {
             InitializeComponent();
             _userAccount = userAccount;
             this.DataContext = _userAccount;
+        }
+        private void UserWindow_Load(object sender, RoutedEventArgs e)
+        {
+            LoadBookList();
+            LoadBookCartList();
+        }
+        private void LoadBookList()
+        {
+            dgAllBooks.ItemsSource = null;
+            dgAllBooks.ItemsSource = _bookRepository.GetBooks().ToList();
+        }
+        private void LoadBookCartList()
+        {
+            dgBookCart.ItemsSource = null;
+            dgBookCart.ItemsSource = _bookCartRepository.GetBookCarts().ToList();
         }
 
         private void btnChangePassword_Click(object sender, RoutedEventArgs e)
@@ -72,6 +91,35 @@ namespace WPFApp.User
             int orderId = (int)button?.CommandParameter;
             OrderDetailWindow orderDetailWindow = new(orderId);
             orderDetailWindow.ShowDialog();
+        }
+        private void btnAddToCart_Click(object sender, RoutedEventArgs e)
+        {
+            Button button = sender as Button;
+            int bookId = (int)button?.CommandParameter;
+            Book? book = _bookRepository.GetBookById(bookId);
+            if (book != null)
+            {
+                BookCart? existingBook = _bookCartRepository.CheckExistedInCart(bookId);
+                if (existingBook == null)
+                {
+                    BookCart bookCart = new BookCart()
+                    {
+                        BookName = book.BookName,
+                        AuthorName = book.Author.AuthorName,
+                        BookGenreType = book.BookCategory.BookGenreType,
+                        PublisherName = book.Publisher.PublisherName,
+                        Quantity = 1,
+                        UnitPrice = book.Price
+                    };
+                    _bookCartRepository.AddBookToCart(bookCart);
+                    MessageBox.Show("Added successfully.");
+                    LoadBookCartList();
+                }
+                else
+                {
+                    MessageBox.Show("Book existed.");
+                }
+            }
         }
     }
 }

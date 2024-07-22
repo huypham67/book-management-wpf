@@ -6,12 +6,13 @@
         xmlns:local="clr-namespace:WPFApp"
         mc:Ignorable="d"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-        Title="Customer Window"
+        Title="User Window"
+        Loaded="UserWindow_Load"
         Height="550"
         Width="1250"
+        WindowState="Maximized"
         ResizeMode="NoResize">
     <Grid>
-        <!--<TextBlock Text="{Binding CustomerFullName}"></TextBlock>-->
         <materialDesign:Card>
             <TabControl materialDesign:NavigationRailAssist.ShowSelectionBackground="True"
                         SnapsToDevicePixels="True"
@@ -367,7 +368,7 @@
                         <ScrollViewer HorizontalScrollBarVisibility="Auto">
                             <DataGrid CanUserAddRows="True"
                                       CanUserDeleteRows="True"
-                                      x:Name="dtBookingDetails"
+                                      x:Name="dgAllBooks"
                                       SelectionMode="Extended"
                                       SelectionUnit="FullRow"
                                       AutoGenerateColumns="False"
@@ -395,9 +396,10 @@
                                     <DataGridTemplateColumn>
                                         <DataGridTemplateColumn.CellTemplate>
                                             <DataTemplate>
-                                                <Button Content="ADD TO CART"
-                                                        Command="{Binding AddToCartCommand}"
-                                                        CommandParameter="{Binding}" />
+                                                <Button Name="btnAddToCart" Content="ADD TO CART"
+                                                        Command="{Binding BookId}"
+                                                        CommandParameter="{Binding BookId}" 
+                                                        Click="btnAddToCart_Click"/>
                                             </DataTemplate>
                                         </DataGridTemplateColumn.CellTemplate>
                                     </DataGridTemplateColumn>
@@ -432,7 +434,7 @@
                         <ScrollViewer HorizontalScrollBarVisibility="Auto">
                             <DataGrid CanUserAddRows="True"
                                       CanUserDeleteRows="True"
-                                      x:Name="dtBookingDetails2"
+                                      x:Name="dgBookCart"
                                       SelectionMode="Extended"
                                       SelectionUnit="FullRow"
                                       AutoGenerateColumns="False"
@@ -491,8 +493,8 @@
                                                 <Button Content="DELETE"
                                                         Background="Red"
                                                         Foreground="White"
-                                                        Command="{Binding AddToCartCommand}"
-                                                        CommandParameter="{Binding}" Margin="0,0,24,0" />
+                                                        Command="{Binding BookId}"
+                                                        CommandParameter="{Binding BookId}" Margin="0,0,24,0" />
                                             </DataTemplate>
                                         </DataGridTemplateColumn.CellTemplate>
                                     </DataGridTemplateColumn>
