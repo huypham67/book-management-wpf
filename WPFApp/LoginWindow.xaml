@@ -55,20 +55,6 @@
             
         </Grid>
         <Grid Grid.Row="2">
-            <!--<TextBox x:Name="txtUserName"
-                     materialDesign:HintAssist.HelperText="Input your email"
-                     materialDesign:HintAssist.Hint="Email"
-                     Height="50"
-                     Width="300"
-                     HorizontalAlignment="Center">
-                <TextBox.Text>
-                    <Binding Path="Email"
-                             UpdateSourceTrigger="PropertyChanged">
-                        <Binding.ValidationRules>
-                        </Binding.ValidationRules>
-                    </Binding>
-                </TextBox.Text>
-            </TextBox>-->
             <TextBox Height="50"
                      Width="300"
                      x:Name="txtEmail"
@@ -88,15 +74,6 @@
             </TextBox>
         </Grid>
         <Grid Grid.Row="3">
-            <!--<PasswordBox
-                x:Name="txtPass"
-                materialDesign:HintAssist.HelperText="At least 8 characters"
-                materialDesign:HintAssist.Hint="Password"
-                materialDesign:TextFieldAssist.HasClearButton="True"
-                Height="50"
-                Width="300"
-                HorizontalAlignment="Center"
-  />-->
 
 
             <PasswordBox Height="50"

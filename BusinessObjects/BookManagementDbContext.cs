@@ -12,6 +12,7 @@ namespace BusinessObjects
 {
     public class BookManagementDbContext : DbContext
     {
+        public DbSet<BookCart> BookCarts { get; set; }
         public DbSet<UserAccount> Users { get; set; }
         public DbSet<Role> Roles { get; set; }
         public DbSet<Book> Books { get; set; }
@@ -39,6 +40,9 @@ namespace BusinessObjects
             modelBuilder.ApplyConfiguration(new OrderDetailConfiguration());
             modelBuilder.ApplyConfiguration(new PublisherConfiguration());
             modelBuilder.ApplyConfiguration(new AuthorConfiguration());
+            modelBuilder.Entity<BookCart>(entity
+                => entity.HasKey(bookCart => bookCart.BookId));
+                
         }
     }
 }

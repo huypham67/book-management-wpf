@@ -6,13 +6,13 @@
         xmlns:local="clr-namespace:WPFApp"
         mc:Ignorable="d"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-        Title="Customer Window"
+        Title="User Window"
+        Loaded="UserWindow_Load"
         Height="550"
         Width="1250"
+        WindowState="Maximized"
         ResizeMode="NoResize">
     <Grid>
-
-        <!--<TextBlock Text="{Binding CustomerFullName}"></TextBlock>-->
         <materialDesign:Card>
 
             <TabControl materialDesign:NavigationRailAssist.ShowSelectionBackground="True"
@@ -166,13 +166,13 @@
                                          TextWrapping="Wrap"
                                          VerticalAlignment="Top"
                                          Width="189" />
-                                
+
                             </Grid>
 
                             <Button Width="100"
                                     Content="Logout"
                                     Margin="1020,201,26,-196"
-                                    Grid.Row="1" />
+                                    Grid.Row="1" Click="btnLogOut_Click"/>
 
 
                         </Grid>
@@ -265,7 +265,7 @@
                                         Margin="10,10,10,10"
                                         Style="{StaticResource OrangeBorderStyle}">
                                     <Grid>
-                                        <TextBlock IsEnabled="False"
+                                        <TextBox Name="txtFullName" IsEnabled="False"
                                                    Text="{Binding FullName}" />
                                     </Grid>
                                 </Border>
@@ -301,9 +301,13 @@
                                         Margin="10,10,10,10"
                                         Style="{StaticResource OrangeBorderStyle}">
                                     <Grid>
-                                        <TextBlock IsEnabled="False"
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="51*"/>
+                                            <ColumnDefinition Width="407*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <TextBox IsEnabled="False"
                                                    Name="txtEmail"
-                                                   Text="{Binding Email}" />
+                                                   Text="{Binding Email}" Grid.ColumnSpan="2" />
                                     </Grid>
                                 </Border>
 
@@ -318,7 +322,7 @@
                                         Margin="10,10,10,10"
                                         Style="{StaticResource OrangeBorderStyle}">
                                     <Grid>
-                                        <TextBlock IsEnabled="False"
+                                        <TextBox IsEnabled="False"
                                                    Name="txtPhoneNumber"
                                                    Text="{Binding PhoneNumber}" />
                                     </Grid>
@@ -328,7 +332,7 @@
                                 <Grid Grid.Row="4"
                                       Grid.Column="0"
                                       Margin="10,10,10,10">
-                                    <TextBlock Name="txtFullName"
+                                    <TextBlock
                                                FontSize="15">Role</TextBlock>
                                 </Grid>
                                 <Border Grid.Row="4"
@@ -369,7 +373,7 @@
                         <ScrollViewer HorizontalScrollBarVisibility="Auto">
                             <DataGrid CanUserAddRows="True"
                                       CanUserDeleteRows="True"
-                                      x:Name="dtBookingDetails"
+                                      x:Name="dgAllBooks"
                                       SelectionMode="Extended"
                                       SelectionUnit="FullRow"
                                       AutoGenerateColumns="False"
@@ -397,9 +401,10 @@
                                     <DataGridTemplateColumn>
                                         <DataGridTemplateColumn.CellTemplate>
                                             <DataTemplate>
-                                                <Button Content="ADD TO CART"
-                                                        Command="{Binding AddToCartCommand}"
-                                                        CommandParameter="{Binding}" />
+                                                <Button Name="btnAddToCart" Content="ADD TO CART"
+                                                        Command="{Binding BookId}"
+                                                        CommandParameter="{Binding BookId}" 
+                                                        Click="btnAddToCart_Click"/>
                                             </DataTemplate>
                                         </DataGridTemplateColumn.CellTemplate>
                                     </DataGridTemplateColumn>
@@ -434,11 +439,10 @@
                         <ScrollViewer HorizontalScrollBarVisibility="Auto">
                             <DataGrid CanUserAddRows="True"
                                       CanUserDeleteRows="True"
-                                      x:Name="dtBookingDetails2"
+                                      x:Name="dgBookCart"
                                       SelectionMode="Extended"
                                       SelectionUnit="FullRow"
                                       AutoGenerateColumns="False"
-                                      d:ItemsSource="{d:SampleData ItemCount=5}"
                                       IsReadOnly="True"
                                       IsSynchronizedWithCurrentItem="True">
                                 <DataGrid.Columns>
@@ -454,11 +458,11 @@
                                     <DataGridTextColumn Header="Book Name"
                                                         Binding="{Binding BookName}" />
                                     <DataGridTextColumn Header="Author"
-                                                        Binding="{Binding Author.AuthorName}" />
+                                                        Binding="{Binding AuthorName}" />
                                     <DataGridTextColumn Header="Category"
-                                                        Binding="{Binding BookCategory.BookGenreType}" />
+                                                        Binding="{Binding BookGenreType}" />
                                     <DataGridTextColumn Header="Publisher"
-                                                        Binding="{Binding Publisher.PublisherName}" />
+                                                        Binding="{Binding PublisherName}" />
                                     <DataGridTemplateColumn Header="Quantity">
                                         <DataGridTemplateColumn.CellTemplate>
                                             <DataTemplate>
@@ -486,15 +490,15 @@
                                         </DataGridTemplateColumn.CellTemplate>
                                     </DataGridTemplateColumn>
                                     <DataGridTextColumn Header="Total Price"
-                                                        Binding="{Binding Price}" />
+                                                        Binding="{Binding TotalPrice}" />
                                     <DataGridTemplateColumn>
                                         <DataGridTemplateColumn.CellTemplate>
                                             <DataTemplate>
-                                                <Button Content="DELETE"
+                                                <Button Name="btnDeleteFromCart" Content="DELETE"
                                                         Background="Red"
                                                         Foreground="White"
-                                                        Command="{Binding AddToCartCommand}"
-                                                        CommandParameter="{Binding}" Margin="0,0,24,0" />
+                                                        Command="{Binding BookId}"
+                                                        CommandParameter="{Binding BookId}" Margin="0,0,24,0" Click="btnDeleteFromCart_Click"/>
                                             </DataTemplate>
                                         </DataGridTemplateColumn.CellTemplate>
                                     </DataGridTemplateColumn>
@@ -570,7 +574,7 @@
                                                         Foreground="Orange"
                                                         Background="Transparent"
                                                         BorderBrush="Transparent" Click="btnViewOrderHistoryDetail_Click">
-                           
+
                                                     <materialDesign:PackIcon Kind="Eye"
                                                                              Width="16"
                                                                              Height="16"

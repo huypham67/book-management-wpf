@@ -24,7 +24,11 @@ namespace DataAccessLayer.DAO
         public Book? GetBookById(int id)
         {
             _context = new();
-            return _context.Books.SingleOrDefault(b => b.BookId == id);
+            return _context.Books
+                .Include(b => b.BookCategory)
+                .Include(a => a.Author)
+                .Include(p => p.Publisher)
+                .SingleOrDefault(b => b.BookId == id);
         }
         public void AddBook(Book book)
         {
