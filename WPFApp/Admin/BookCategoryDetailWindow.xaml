@@ -3,10 +3,117 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:WPFApp.Admin"
+        xmlns:local="clr-namespace:WPFApp"
         mc:Ignorable="d"
-        Title="BookCategoryDetailWindow" Height="450" Width="800">
-    <Grid>
-        
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        Title="Add New Role"
+        Height="450"
+        Width="800">
+    <Grid Background="LightGray">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1.5*"></RowDefinition>
+
+            <RowDefinition></RowDefinition>
+            <RowDefinition Height="1.5*"></RowDefinition>
+            <RowDefinition Height="4*"></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0">
+            <TextBlock Name="txtBlockHeader"
+                       HorizontalAlignment="Center"
+                       FontSize="40"
+                       FontWeight="Bold"
+                       Style="{StaticResource MaterialDesignHeadline2TextBlock}"
+                       Text="ADD NEW BOOK CATEGORY">
+                <TextBlock.Foreground>
+                    <LinearGradientBrush StartPoint="0,0"
+                                         EndPoint="1,0">
+                        <GradientStop Color="Orange"
+                                      Offset="0.0" />
+                        <GradientStop Color="OrangeRed"
+                                      Offset="1.0" />
+                    </LinearGradientBrush>
+                </TextBlock.Foreground>
+            </TextBlock>
+        </Grid>
+
+        <Grid Grid.Row="2">
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <TextBox Grid.Column="0"
+                         Name="txtBookCategoryName"
+                         FontWeight="Bold"
+                         Text="{Binding BookGenreType}"
+                         VerticalAlignment="Center"
+                         Foreground="Black"
+                         materialDesign:HintAssist.Hint="Book Genre Type"
+                         materialDesign:HintAssist.HelperText="Enter book category name"
+                         Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                         Width="300" />
+
+            </Grid>
+
+
+        </Grid>
+        <Grid Grid.Row="3">
+            <StackPanel VerticalAlignment="Center">
+                <TextBox Name="txtBookCategoryDescription"
+                         Text="{Binding Description}"
+                         Height="100"
+                         Width="700"
+                         VerticalAlignment="Top"
+                         FontWeight="Bold"
+                         Foreground="Black"
+                         materialDesign:HintAssist.Hint="Book Category Description"
+                         materialDesign:TextFieldAssist.CharacterCounterVisibility="{Binding Path=IsChecked, ElementName=MaterialDesignOutlinedTextBoxTextCountComboBox, Converter={StaticResource BooleanToVisibilityConverter}}"
+                         MaxLength="40"
+                         Style="{StaticResource MaterialDesignOutlinedTextBox}"
+                         TextWrapping="Wrap"
+                         VerticalScrollBarVisibility="Auto" />
+                <CheckBox x:Name="MaterialDesignOutlinedTextBoxTextCountComboBox"
+                          Content="View Text Input Count"
+                          Width="700"
+                          FontWeight="Bold"
+                          Foreground="Black"
+                          FontSize="10" />
+            </StackPanel>
+        </Grid>
+
+
+        <Grid Grid.Row="5">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Button Name="btnSave"
+                    Grid.Column="0"
+                    Width="100"
+                    Content="Save"
+                    Background="Orange"
+                    Foreground="white"
+                    FontWeight="Bold"
+                    IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
+                    Style="{StaticResource MaterialDesignPaperLightButton}"
+                    ToolTip="Resource name: MaterialDesignPaperLightButton"
+                    Click="btnSave_Click" />
+            <Button x:Name="btnCancel"
+                    Grid.Column="1"
+                    Width="100"
+                    Content="Cancel"
+                    Background="Orange"
+                    Foreground="White"
+                    FontWeight="Bold"
+                    IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
+                    Style="{StaticResource MaterialDesignPaperLightButton}"
+                    ToolTip="Resource name: MaterialDesignPaperLightButton"
+                    Click="btnCancel_Click" />
+        </Grid>
     </Grid>
 </Window>

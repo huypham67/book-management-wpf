@@ -36,8 +36,11 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Page Update="Admin\BookCategoryDetailWindow.xaml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Page>
     <Page Update="Admin\BookDetailWindow.xaml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Page>
     <Page Update="Admin\MainAdminWindow.xaml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>

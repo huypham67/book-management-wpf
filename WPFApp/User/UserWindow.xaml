@@ -53,8 +53,7 @@
                                         Content="Update"
                                         IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
                                         Style="{StaticResource MaterialDesignPaperButton}"
-                                        ToolTip="Resource name: MaterialDesignPaperButton"
-                                         />
+                                        ToolTip="Resource name: MaterialDesignPaperButton" />
                                 <Button Grid.Column="1"
                                         VerticalAlignment="Top"
                                         HorizontalAlignment="Right"
@@ -62,8 +61,7 @@
                                         Content="Log out"
                                         IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
                                         Style="{StaticResource MaterialDesignPaperButton}"
-                                        ToolTip="Resource name: MaterialDesignPaperButton"
-                                         />
+                                        ToolTip="Resource name: MaterialDesignPaperButton" />
                             </Grid>
                         </Grid>
                         <materialDesign:Card Width="1300"
@@ -160,8 +158,7 @@
 
                                 <!-- Password -->
                                 <Grid Grid.Row="6"
-                                      Grid.Column="0"
-                                      >
+                                      Grid.Column="0">
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="9*" />
                                         <ColumnDefinition Width="25*" />
@@ -208,39 +205,39 @@
                                     <ColumnDefinition></ColumnDefinition>
                                     <ColumnDefinition></ColumnDefinition>
                                 </Grid.ColumnDefinitions>
-                                <Button Name="btnChangePassword" VerticalAlignment="Top"
+                                <Button Name="btnChangePassword"
+                                        VerticalAlignment="Top"
                                         HorizontalAlignment="Center"
                                         Width="151"
                                         Content="Change password"
                                         IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
                                         Style="{StaticResource MaterialDesignPaperButton}"
-                                        ToolTip="Resource name: MaterialDesignPaperButton"
-                                         />
-                                <Button Name="btnUpdateProfile" Grid.Column="1"
+                                        ToolTip="Resource name: MaterialDesignPaperButton" />
+                                <Button Name="btnUpdateProfile"
+                                        Grid.Column="1"
                                         VerticalAlignment="Top"
                                         HorizontalAlignment="Right"
                                         Width="80"
                                         Content="Update"
                                         IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
                                         Style="{StaticResource MaterialDesignPaperButton}"
-                                        ToolTip="Resource name: MaterialDesignPaperButton"
-                                         />
-                                <Button Name="btnLogOut" Grid.Column="2"
+                                        ToolTip="Resource name: MaterialDesignPaperButton" />
+                                <Button Name="btnLogOut"
+                                        Grid.Column="2"
                                         VerticalAlignment="Top"
                                         HorizontalAlignment="Right"
                                         Width="80"
                                         Content="Log out"
                                         IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
                                         Style="{StaticResource MaterialDesignPaperButton}"
-                                        ToolTip="Resource name: MaterialDesignPaperButton"
-                                         />
+                                        ToolTip="Resource name: MaterialDesignPaperButton" />
                             </Grid>
                         </Grid>
                         <materialDesign:Card Width="1300"
                                              Height="400"
                                              Padding="10">
 
-                            <Grid>
+                            <Grid Margin="0,0,155,0">
                                 <Grid.RowDefinitions>
                                     <RowDefinition></RowDefinition>
                                     <RowDefinition></RowDefinition>
@@ -251,22 +248,23 @@
                                     <RowDefinition></RowDefinition>
                                 </Grid.RowDefinitions>
                                 <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="3*"></ColumnDefinition>
-                                    <ColumnDefinition Width="7*"></ColumnDefinition>
+                                    <ColumnDefinition Width="1*"></ColumnDefinition>
+                                    <ColumnDefinition Width="5*"></ColumnDefinition>
                                 </Grid.ColumnDefinitions>
 
                                 <!-- Full Name -->
                                 <Grid Grid.Row="0"
                                       Grid.Column="0"
-                                      Margin="10">
+                                      Margin="10,10,10,10">
                                     <TextBlock FontSize="15">Full Name</TextBlock>
                                 </Grid>
                                 <Border Grid.Row="0"
                                         Grid.Column="1"
-                                        Margin="10"
+                                        Margin="10,10,10,10"
                                         Style="{StaticResource OrangeBorderStyle}">
                                     <Grid>
-                                        <TextBlock IsEnabled="False" Text="{Binding FullName}" />
+                                        <TextBlock IsEnabled="False"
+                                                   Text="{Binding FullName}" />
                                     </Grid>
                                 </Border>
 
@@ -276,59 +274,69 @@
                                 <Grid Grid.Row="1"
                                       Grid.Column="0"
                                       Margin="10,10,10,10">
-                                    <TextBlock FontSize="15" Margin="0,0,0,10">Date Of Birth</TextBlock>
+                                    <TextBlock FontSize="15"
+                                               Margin="0,0,0,10">Date Of Birth</TextBlock>
                                 </Grid>
                                 <Border Grid.Row="1"
                                         Grid.Column="1"
-                                        Margin="10"
+                                        Margin="10,10,10,10"
                                         Style="{StaticResource OrangeBorderStyle}">
                                     <Grid>
-                                        <DatePicker IsEnabled="False" Name="dpDateOfBirth" SelectedDate="{Binding DateOfBirth}" />
+                                        <DatePicker IsEnabled="False"
+                                                    Name="dpDateOfBirth"
+                                                    SelectedDate="{Binding DateOfBirth}" />
                                     </Grid>
                                 </Border>
 
                                 <!-- Email Address -->
                                 <Grid Grid.Row="2"
                                       Grid.Column="0"
-                                      Margin="10">
+                                      Margin="10,10,10,10">
                                     <TextBlock FontSize="15">Email</TextBlock>
                                 </Grid>
                                 <Border Grid.Row="2"
                                         Grid.Column="1"
-                                        Margin="10"
+                                        Margin="10,10,10,10"
                                         Style="{StaticResource OrangeBorderStyle}">
                                     <Grid>
-                                        <TextBlock IsEnabled="False" Name="txtEmail" Text="{Binding Email}" />
+                                        <TextBlock IsEnabled="False"
+                                                   Name="txtEmail"
+                                                   Text="{Binding Email}" />
                                     </Grid>
                                 </Border>
 
                                 <!-- Phone Number -->
                                 <Grid Grid.Row="3"
                                       Grid.Column="0"
-                                      Margin="10">
+                                      Margin="10,10,10,10">
                                     <TextBlock FontSize="15">Phone Number</TextBlock>
                                 </Grid>
                                 <Border Grid.Row="3"
                                         Grid.Column="1"
-                                        Margin="10"
+                                        Margin="10,10,10,10"
                                         Style="{StaticResource OrangeBorderStyle}">
                                     <Grid>
-                                        <TextBlock IsEnabled="False" Name="txtPhoneNumber" Text="{Binding FullName}" />
+                                        <TextBlock IsEnabled="False"
+                                                   Name="txtPhoneNumber"
+                                                   Text="{Binding FullName}" />
                                     </Grid>
                                 </Border>
 
                                 <!-- Customer Status -->
                                 <Grid Grid.Row="4"
                                       Grid.Column="0"
-                                      Margin="10">
-                                    <TextBlock Name="txtFullName" FontSize="15">Role</TextBlock>
+                                      Margin="10,10,10,10">
+                                    <TextBlock Name="txtFullName"
+                                               FontSize="15">Role</TextBlock>
                                 </Grid>
                                 <Border Grid.Row="4"
                                         Grid.Column="1"
-                                        Margin="10"
+                                        Margin="10,10,10,10"
                                         Style="{StaticResource OrangeBorderStyle}">
                                     <Grid>
-                                        <TextBlock IsEnabled="False" Name="txtRole" Text="{Binding Role.RoleName}" />
+                                        <TextBlock IsEnabled="False"
+                                                   Name="txtRole"
+                                                   Text="{Binding Role.RoleName}" />
                                     </Grid>
                                 </Border>
 
@@ -418,8 +426,8 @@
                                    Style="{StaticResource MaterialDesignHeadline5TextBlock}"
                                    Text="Your Cart" />
                         <materialDesign:Card Width="700"
-                                         Padding="8"
-                                         UniformCornerRadius="6">
+                                             Padding="8"
+                                             UniformCornerRadius="6">
                         </materialDesign:Card>
                         <ScrollViewer HorizontalScrollBarVisibility="Auto">
                             <DataGrid CanUserAddRows="True"
@@ -448,14 +456,29 @@
                                     <DataGridTextColumn Header="Category"
                                                         Binding="{Binding BookCategory.BookGenreType}" />
                                     <DataGridTextColumn Header="Publisher"
-                                            Binding="{Binding Publisher.PublisherName}" />
+                                                        Binding="{Binding Publisher.PublisherName}" />
                                     <DataGridTemplateColumn Header="Quantity">
                                         <DataGridTemplateColumn.CellTemplate>
                                             <DataTemplate>
-                                                <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
-                                                    <Button Content="-" Command="{Binding DecreaseQuantityCommand}" CommandParameter="{Binding}" Width="20" Height="20" Padding="0" Margin="0,0,2,0"/>
-                                                    <TextBlock Text="{Binding Quantity}" VerticalAlignment="Center" Margin="2,0,2,0"/>
-                                                    <Button Content="+" Command="{Binding IncreaseQuantityCommand}" CommandParameter="{Binding}" Width="20" Height="20" Padding="0" Margin="2,0,0,0"/>
+                                                <StackPanel Orientation="Horizontal"
+                                                            VerticalAlignment="Center">
+                                                    <Button Content="-"
+                                                            Command="{Binding DecreaseQuantityCommand}"
+                                                            CommandParameter="{Binding}"
+                                                            Width="20"
+                                                            Height="20"
+                                                            Padding="0"
+                                                            Margin="0,0,2,0" />
+                                                    <TextBlock Text="{Binding Quantity}"
+                                                               VerticalAlignment="Center"
+                                                               Margin="2,0,2,0" />
+                                                    <Button Content="+"
+                                                            Command="{Binding IncreaseQuantityCommand}"
+                                                            CommandParameter="{Binding}"
+                                                            Width="20"
+                                                            Height="20"
+                                                            Padding="0"
+                                                            Margin="2,0,0,0" />
                                                 </StackPanel>
                                             </DataTemplate>
                                         </DataGridTemplateColumn.CellTemplate>

@@ -52,6 +52,7 @@ namespace WPFApp.Admin
         {
             cboBoxRole.ItemsSource = null;
             cboBoxRole.ItemsSource = _roleRepository.GetRoles().ToList();
+
         }
         private void btnSave_Click(object sender, RoutedEventArgs e)
         {
