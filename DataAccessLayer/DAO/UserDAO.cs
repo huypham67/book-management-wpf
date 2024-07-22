@@ -42,8 +42,12 @@ namespace DataAccessLayer.DAO
         public void UpdateUser(UserAccount u)
         {
             _context = new();
-            _context.Update(u);
-            _context.SaveChanges();
+            var existingUser = _context.Books.Find(u.UserId);
+            if (existingUser != null)
+            {
+                _context.Entry(existingUser).CurrentValues.SetValues(existingUser);
+                _context.SaveChanges();
+            }
         }
         public void DeleteUser(UserAccount u)
         {

@@ -11,6 +11,7 @@ namespace Repositories.BookCartRepositories
     {
         IEnumerable<BookCart> GetBookCarts();
         void AddBookToCart(BookCart bookCart);
+        void RemoveBookToCart(BookCart bookCart);
         BookCart? CheckExistedInCart(int id);
     }
 }

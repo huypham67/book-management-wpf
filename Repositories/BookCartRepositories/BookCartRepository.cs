@@ -16,5 +16,8 @@ namespace Repositories.BookCartRepositories
                     => BookCartDAO.Instance.AddBookToCart(bookCart);
         public BookCart? CheckExistedInCart(int id)
                     => BookCartDAO.Instance.CheckExisted(id);
+
+        public void RemoveBookToCart(BookCart bookCart)
+                    => BookCartDAO.Instance.DeleteFromCart(bookCart);
     }
 }

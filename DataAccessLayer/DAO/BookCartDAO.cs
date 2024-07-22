@@ -24,6 +24,12 @@ namespace DataAccessLayer.DAO
             _context.Add(bookCart);
             _context.SaveChanges();
         }
+        public void DeleteFromCart(BookCart bookCart)
+        {
+            _context = new();
+            _context.Remove(bookCart);
+            _context.SaveChanges();
+        }
         public BookCart? CheckExisted(int id)
         {
             _context = new();
