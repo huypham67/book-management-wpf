@@ -12,7 +12,7 @@
         Loaded="MainAdminWindow_Load"
         ResizeMode="NoResize"
         WindowState="Maximized">
-    <Grid Background="White">
+    <Grid Background="Black">
 
         <materialDesign:Card>
             <TabControl MinHeight="200"

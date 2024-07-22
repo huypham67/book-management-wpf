@@ -495,7 +495,7 @@ namespace BusinessObjects.Migrations
                         });
                 });
 
-            modelBuilder.Entity("BusinessObjects.Models.OrderDetailView", b =>
+            modelBuilder.Entity("BusinessObjects.Models.OrderDetailDto", b =>
                 {
                     b.Property<string>("CustomerName")
                         .HasColumnType("nvarchar(max)");
@@ -674,7 +674,7 @@ namespace BusinessObjects.Migrations
                         });
                 });
 
-            modelBuilder.Entity("BusinessObjects.Models.User", b =>
+            modelBuilder.Entity("BusinessObjects.Models.UserAccount", b =>
                 {
                     b.Property<int>("UserId")
                         .ValueGeneratedOnAdd()
@@ -837,7 +837,7 @@ namespace BusinessObjects.Migrations
 
             modelBuilder.Entity("BusinessObjects.Models.Order", b =>
                 {
-                    b.HasOne("BusinessObjects.Models.User", "User")
+                    b.HasOne("BusinessObjects.Models.UserAccount", "User")
                         .WithMany("Orders")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -865,7 +865,7 @@ namespace BusinessObjects.Migrations
                     b.Navigation("Order");
                 });
 
-            modelBuilder.Entity("BusinessObjects.Models.User", b =>
+            modelBuilder.Entity("BusinessObjects.Models.UserAccount", b =>
                 {
                     b.HasOne("BusinessObjects.Models.Role", "Role")
                         .WithMany("Users")
@@ -906,7 +906,7 @@ namespace BusinessObjects.Migrations
                     b.Navigation("Users");
                 });
 
-            modelBuilder.Entity("BusinessObjects.Models.User", b =>
+            modelBuilder.Entity("BusinessObjects.Models.UserAccount", b =>
                 {
                     b.Navigation("Orders");
                 });

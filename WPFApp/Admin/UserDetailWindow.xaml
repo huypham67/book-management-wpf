@@ -10,7 +10,7 @@
         Title="Add New Customer"
         Height="450"
         Width="800">
-    <Grid Background="DimGray">
+    <Grid Background="LightGray">
         <Grid.RowDefinitions>
             <RowDefinition></RowDefinition>
 
@@ -47,16 +47,18 @@
             </Grid.ColumnDefinitions>
             <TextBox Grid.Column="0"
                      Name="txtFullName"
+                     FontWeight="Bold"
                      Text="{Binding FullName}"
                      VerticalAlignment="Center"
-                     Foreground="white"
+                     Foreground="Black"
                      materialDesign:HintAssist.Hint="Full Name"
                      materialDesign:HintAssist.HelperText="Enter book name"
                      Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                      Width="300" />
             <DatePicker Grid.Column="1" Name="dpDateOfBirth"
                         SelectedDate="{Binding DateOfBirth}"
-                        Foreground="white"
+                        Foreground="Black"
+                        FontWeight="Bold"
                         materialDesign:HintAssist.Hint="Date Of Birth"
                         materialDesign:HintAssist.HelperText="Enter DateOfBirth"
                         Width="300"
@@ -72,7 +74,8 @@
                      Name="txtEmail"
                      Text="{Binding Email}"
                      VerticalAlignment="Center"
-                     Foreground="white"
+                     FontWeight="Bold"
+                     Foreground="Black"
                      materialDesign:HintAssist.Hint="Email"
                      materialDesign:HintAssist.HelperText="Enter Email"
                      Style="{StaticResource MaterialDesignFloatingHintTextBox}"
@@ -81,7 +84,8 @@
                      VerticalAlignment="Center"
                      Name="txtPhoneNumber"
                      Text="{Binding PhoneNumber}"
-                     Foreground="white"
+                     FontWeight="Bold"
+                     Foreground="Black"
                      materialDesign:HintAssist.Hint="Phone Number"
                      materialDesign:HintAssist.HelperText="Enter Phone Number"
                      Style="{StaticResource MaterialDesignFloatingHintTextBox}"
@@ -96,7 +100,8 @@
             <ComboBox Name="cboBoxStatus"
                       SelectedValue="{Binding Status}"
                       Grid.Column="0"
-                      Foreground="white"
+                      Foreground="Black"
+                      FontWeight="Bold"
                       materialDesign:HintAssist.Hint="Status"
                       IsEditable="True"
                       Width="300"/>
@@ -104,7 +109,8 @@
                      VerticalAlignment="Center"
                      Name="txtPassword"
                      Text="{Binding PasswordHash}"
-                     Foreground="white"
+                     Foreground="Black"
+                     FontWeight="Bold"
                      materialDesign:HintAssist.Hint="Password"
                      materialDesign:HintAssist.HelperText="Enter password"
                      Style="{StaticResource MaterialDesignFloatingHintTextBox}"
@@ -120,7 +126,8 @@
                       SelectedValue="{Binding RoleId}"
                       SelectedValuePath="RoleId"
                       Grid.Column="0"
-                      Foreground="white"
+                      Foreground="Black"
+                      FontWeight="Bold"
                       materialDesign:HintAssist.Hint="Role"
                       IsEditable="True"
                       Width="300">
@@ -144,7 +151,7 @@
                     Width="100"
                     Content="Save"
                     Background="Orange"
-                    Foreground="white"
+                    Foreground="Black"
                     FontWeight="Bold"
                     IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
                     Style="{StaticResource MaterialDesignPaperLightButton}"
@@ -154,7 +161,7 @@
                     Width="100"
                     Content="Cancel"
                     Background="Orange"
-                    Foreground="White"
+                    Foreground="Black"
                     FontWeight="Bold"
                     IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
                     Style="{StaticResource MaterialDesignPaperLightButton}"
