@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace BusinessObjects.Models
 {
-    public class User
+    public class UserAccount
     {
         public int UserId { get; set; }
         public string? FullName { get; set; }

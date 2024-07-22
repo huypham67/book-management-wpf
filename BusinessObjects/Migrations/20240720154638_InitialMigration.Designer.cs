@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BusinessObjects.Migrations
 {
     [DbContext(typeof(BookManagementDbContext))]
-    [Migration("20240720101152_InitialMigration")]
+    [Migration("20240720154638_InitialMigration")]
     partial class InitialMigration
     {
         /// <inheritdoc />
@@ -427,9 +427,6 @@ namespace BusinessObjects.Migrations
                     b.Property<int>("BookId")
                         .HasColumnType("int");
 
-                    b.Property<decimal>("Discount")
-                        .HasColumnType("decimal(18,2)");
-
                     b.Property<int>("Quantity")
                         .HasColumnType("int");
 
@@ -447,7 +444,6 @@ namespace BusinessObjects.Migrations
                         {
                             OrderId = 1,
                             BookId = 1,
-                            Discount = 0m,
                             Quantity = 2,
                             UnitPrice = 19.99m
                         },
@@ -455,7 +451,6 @@ namespace BusinessObjects.Migrations
                         {
                             OrderId = 1,
                             BookId = 3,
-                            Discount = 1.00m,
                             Quantity = 1,
                             UnitPrice = 15.99m
                         },
@@ -463,7 +458,6 @@ namespace BusinessObjects.Migrations
                         {
                             OrderId = 2,
                             BookId = 2,
-                            Discount = 0m,
                             Quantity = 1,
                             UnitPrice = 29.99m
                         },
@@ -471,7 +465,6 @@ namespace BusinessObjects.Migrations
                         {
                             OrderId = 3,
                             BookId = 4,
-                            Discount = 0.50m,
                             Quantity = 1,
                             UnitPrice = 12.99m
                         },
@@ -479,7 +472,6 @@ namespace BusinessObjects.Migrations
                         {
                             OrderId = 4,
                             BookId = 5,
-                            Discount = 0m,
                             Quantity = 3,
                             UnitPrice = 18.99m
                         },
@@ -487,7 +479,6 @@ namespace BusinessObjects.Migrations
                         {
                             OrderId = 5,
                             BookId = 6,
-                            Discount = 2.00m,
                             Quantity = 2,
                             UnitPrice = 22.99m
                         },
@@ -495,7 +486,6 @@ namespace BusinessObjects.Migrations
                         {
                             OrderId = 6,
                             BookId = 7,
-                            Discount = 0m,
                             Quantity = 1,
                             UnitPrice = 25.99m
                         },
@@ -503,10 +493,34 @@ namespace BusinessObjects.Migrations
                         {
                             OrderId = 7,
                             BookId = 8,
-                            Discount = 5.00m,
                             Quantity = 1,
                             UnitPrice = 30.99m
                         });
+                });
+
+            modelBuilder.Entity("BusinessObjects.Models.OrderDetailView", b =>
+                {
+                    b.Property<string>("CustomerName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("OrderDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("OrderId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("OrderStatus")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Quantity")
+                        .HasColumnType("int");
+
+                    b.Property<decimal>("TotalPrice")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.ToTable((string)null);
+
+                    b.ToView("viewOrderDetails", (string)null);
                 });
 
             modelBuilder.Entity("BusinessObjects.Models.Publisher", b =>
@@ -646,14 +660,20 @@ namespace BusinessObjects.Migrations
                         new
                         {
                             RoleId = 1,
-                            RoleDescription = "Administrator role",
-                            RoleName = "Admin"
+                            RoleDescription = "Customer role",
+                            RoleName = "User"
                         },
                         new
                         {
                             RoleId = 2,
-                            RoleDescription = "Customer role",
-                            RoleName = "User"
+                            RoleDescription = "Author role",
+                            RoleName = "Author"
+                        },
+                        new
+                        {
+                            RoleId = 3,
+                            RoleDescription = "Publisher role",
+                            RoleName = "Publisher"
                         });
                 });
 
@@ -705,53 +725,53 @@ namespace BusinessObjects.Migrations
                         {
                             UserId = 1,
                             DateOfBirth = new DateTime(1985, 5, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Email = "john.doe@example.com",
+                            Email = "doe@gmail.com",
                             FullName = "John Doe",
-                            PasswordHash = "hashed_password_1",
+                            PasswordHash = "123123",
                             PhoneNumber = "123-456-7890",
-                            RoleId = 1,
+                            RoleId = 3,
                             Status = 0
                         },
                         new
                         {
                             UserId = 2,
                             DateOfBirth = new DateTime(1990, 10, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Email = "jane.smith@example.com",
+                            Email = "jane@gmail.com",
                             FullName = "Jane Smith",
-                            PasswordHash = "hashed_password_2",
+                            PasswordHash = "123123",
                             PhoneNumber = "987-654-3210",
-                            RoleId = 2,
+                            RoleId = 1,
                             Status = 1
                         },
                         new
                         {
                             UserId = 3,
                             DateOfBirth = new DateTime(1988, 3, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Email = "alice.johnson@example.com",
+                            Email = "johnson@example.com",
                             FullName = "Alice Johnson",
-                            PasswordHash = "hashed_password_3",
+                            PasswordHash = "123123",
                             PhoneNumber = "555-123-4567",
-                            RoleId = 2,
+                            RoleId = 1,
                             Status = 0
                         },
                         new
                         {
                             UserId = 4,
                             DateOfBirth = new DateTime(1975, 12, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Email = "bob.brown@example.com",
+                            Email = "bob@gmail.com",
                             FullName = "Bob Brown",
-                            PasswordHash = "hashed_password_4",
+                            PasswordHash = "123123",
                             PhoneNumber = "555-987-6543",
-                            RoleId = 1,
+                            RoleId = 3,
                             Status = 1
                         },
                         new
                         {
                             UserId = 5,
                             DateOfBirth = new DateTime(1995, 7, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Email = "carol.white@example.com",
+                            Email = "white@example.com",
                             FullName = "Carol White",
-                            PasswordHash = "hashed_password_5",
+                            PasswordHash = "123123",
                             PhoneNumber = "555-654-3210",
                             RoleId = 2,
                             Status = 0
@@ -760,31 +780,31 @@ namespace BusinessObjects.Migrations
                         {
                             UserId = 6,
                             DateOfBirth = new DateTime(1982, 11, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Email = "david.green@example.com",
+                            Email = "green@example.com",
                             FullName = "David Green",
-                            PasswordHash = "hashed_password_6",
+                            PasswordHash = "123",
                             PhoneNumber = "555-321-9876",
-                            RoleId = 1,
+                            RoleId = 2,
                             Status = 0
                         },
                         new
                         {
                             UserId = 7,
                             DateOfBirth = new DateTime(2000, 4, 18, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Email = "eva.black@example.com",
+                            Email = "black@example.com",
                             FullName = "Eva Black",
-                            PasswordHash = "hashed_password_7",
+                            PasswordHash = "123123",
                             PhoneNumber = "555-789-1234",
-                            RoleId = 2,
+                            RoleId = 1,
                             Status = 1
                         },
                         new
                         {
                             UserId = 8,
                             DateOfBirth = new DateTime(1998, 2, 14, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Email = "frank.blue@example.com",
+                            Email = "blue@example.com",
                             FullName = "Frank Blue",
-                            PasswordHash = "hashed_password_8",
+                            PasswordHash = "123123",
                             PhoneNumber = "555-456-7890",
                             RoleId = 1,
                             Status = 0

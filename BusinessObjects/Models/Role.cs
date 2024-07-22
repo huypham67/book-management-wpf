@@ -11,6 +11,6 @@ namespace BusinessObjects.Models
         public int RoleId { get; set; }
         public string? RoleName { get; set; }
         public string? RoleDescription { get; set; }
-        public virtual ICollection<User> Users { get; set; } = new List<User>();
+        public virtual ICollection<UserAccount> Users { get; set; } = new List<UserAccount>();
     }
 }
