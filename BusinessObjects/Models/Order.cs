@@ -12,11 +12,11 @@ namespace BusinessObjects.Models
         public DateTime OrderDate { get; set; }
         public OrderStatus OrderStatus { get; set; }
         public int UserId { get; set; }
-        public virtual User? User { get; set; }
+        public virtual UserAccount? User { get; set; }
         public ICollection<OrderDetail> OrderDetails { get; set; } = new List<OrderDetail>();
     }
     public enum OrderStatus
     {
-        Pending, Confirmed
+        Pending = 0, Confirmed = 1
     }
 }

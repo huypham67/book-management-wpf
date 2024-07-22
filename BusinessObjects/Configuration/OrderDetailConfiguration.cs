@@ -16,7 +16,6 @@ namespace BusinessObjects.Configuration
             builder.HasKey(e => new { e.OrderId, e.BookId });
             builder.Property(e => e.Quantity).IsRequired();
             builder.Property(e => e.UnitPrice).IsRequired().HasColumnType("decimal(18,2)");
-            builder.Property(e => e.Discount).IsRequired().HasColumnType("decimal(18,2)");
             builder.HasOne(e => e.Order)
                   .WithMany(o => o.OrderDetails)
                   .HasForeignKey(e => e.OrderId);
@@ -29,8 +28,7 @@ namespace BusinessObjects.Configuration
                 OrderId = 1,
                 BookId = 1,
                 Quantity = 2,
-                UnitPrice = 19.99m,
-                Discount = 0m
+                UnitPrice = 19.99m
             },
             new OrderDetail
             {
@@ -38,7 +36,6 @@ namespace BusinessObjects.Configuration
                 BookId = 3,
                 Quantity = 1,
                 UnitPrice = 15.99m,
-                Discount = 1.00m
             },
             new OrderDetail
             {
@@ -46,7 +43,6 @@ namespace BusinessObjects.Configuration
                 BookId = 2,
                 Quantity = 1,
                 UnitPrice = 29.99m,
-                Discount = 0m
             },
             new OrderDetail
             {
@@ -54,7 +50,6 @@ namespace BusinessObjects.Configuration
                 BookId = 4,
                 Quantity = 1,
                 UnitPrice = 12.99m,
-                Discount = 0.50m
             },
             new OrderDetail
             {
@@ -62,33 +57,28 @@ namespace BusinessObjects.Configuration
                 BookId = 5,
                 Quantity = 3,
                 UnitPrice = 18.99m,
-                Discount = 0m
             },
             new OrderDetail
             {
                 OrderId = 5,
                 BookId = 6,
                 Quantity = 2,
-                UnitPrice = 22.99m,
-                Discount = 2.00m
+                UnitPrice = 22.99m
             },
             new OrderDetail
             {
                 OrderId = 6,
                 BookId = 7,
                 Quantity = 1,
-                UnitPrice = 25.99m,
-                Discount = 0m
+                UnitPrice = 25.99m
             },
             new OrderDetail
             {
                 OrderId = 7,
                 BookId = 8,
                 Quantity = 1,
-                UnitPrice = 30.99m,
-                Discount = 5.00m
-            }
-        );
+                UnitPrice = 30.99m
+            });
         }
     }
 }

@@ -12,7 +12,7 @@ namespace BusinessObjects
 {
     public class BookManagementDbContext : DbContext
     {
-        public DbSet<User> Users { get; set; }
+        public DbSet<UserAccount> Users { get; set; }
         public DbSet<Role> Roles { get; set; }
         public DbSet<Book> Books { get; set; }
         public DbSet<BookCategory> BookCategories { get; set; }
@@ -20,6 +20,7 @@ namespace BusinessObjects
         public DbSet<Author> Authors { get; set; }
         public DbSet<Order> Orders { get; set; }
         public DbSet<OrderDetail> OrderDetails { get; set; }
+        public DbSet<OrderDetailDto> OrderDetailViews { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             IConfiguration configuration = new ConfigurationBuilder()
@@ -29,6 +30,7 @@ namespace BusinessObjects
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<OrderDetailDto>().HasNoKey().ToView("viewOrderDetails");
             modelBuilder.ApplyConfiguration(new UserConfiguration());
             modelBuilder.ApplyConfiguration(new RoleConfiguration());
             modelBuilder.ApplyConfiguration(new BookConfiguration());

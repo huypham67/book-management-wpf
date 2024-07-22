@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:WPFApp"
         mc:Ignorable="d"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-        Title="Add New Customer"
+        Title="Add New Role"
         Height="450"
         Width="800">
     <Grid Background="DimGray">
@@ -23,10 +23,11 @@
         </Grid.RowDefinitions>
 
         <Grid Grid.Row="0">
-            <TextBlock HorizontalAlignment="Center"
+            <TextBlock Name="txtBlockHeader"
+                        HorizontalAlignment="Center"
                        FontSize="40"
                        Style="{StaticResource MaterialDesignHeadline2TextBlock}"
-                       Text="Add New Role">
+                       Text="ADD NEW ROLE">
                 <TextBlock.Foreground>
                     <LinearGradientBrush StartPoint="0,0"
                                          EndPoint="1,0">
@@ -46,11 +47,11 @@
                     <ColumnDefinition></ColumnDefinition>
                 </Grid.ColumnDefinitions>
                 <TextBox Grid.Column="0"
-                         Name="txtBookName"
+                         Name="txtRoleName"
                          VerticalAlignment="Center"
                          Foreground="white"
-                         materialDesign:HintAssist.Hint="Book Name"
-                         materialDesign:HintAssist.HelperText="Enter book name"
+                         materialDesign:HintAssist.Hint="Role Name"
+                         materialDesign:HintAssist.HelperText="Enter role name"
                          Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                          Width="300" />
 
@@ -60,7 +61,7 @@
         </Grid>
         <Grid Grid.Row="3">
             <StackPanel VerticalAlignment="Center">
-                <TextBox Name="txtRoomDesc"
+                <TextBox Name="txtRoleDescription"
                          Height="100"
                          Width="700"
                          VerticalAlignment="Top"
@@ -86,7 +87,7 @@
                 <ColumnDefinition></ColumnDefinition>
                 <ColumnDefinition></ColumnDefinition>
             </Grid.ColumnDefinitions>
-            <Button Grid.Column="0"
+            <Button Name="btnSave" Grid.Column="0"
                     Width="100"
                     Content="Save"
                     Background="Orange"
@@ -94,8 +95,8 @@
                     FontWeight="Bold"
                     IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
                     Style="{StaticResource MaterialDesignPaperLightButton}"
-                    ToolTip="Resource name: MaterialDesignPaperLightButton" />
-            <Button Grid.Column="1"
+                    ToolTip="Resource name: MaterialDesignPaperLightButton" Click="btnSave_Click" />
+            <Button x:Name="btnCancel" Grid.Column="1"
                     Width="100"
                     Content="Cancel"
                     Background="Orange"
@@ -103,7 +104,7 @@
                     FontWeight="Bold"
                     IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
                     Style="{StaticResource MaterialDesignPaperLightButton}"
-                    ToolTip="Resource name: MaterialDesignPaperLightButton" />
+                    ToolTip="Resource name: MaterialDesignPaperLightButton" Click="btnCancel_Click" />
         </Grid>
     </Grid>
 </Window>

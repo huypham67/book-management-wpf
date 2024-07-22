@@ -8,7 +8,8 @@
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         Title="Admin"
         Height="500"
-        Width="1200"
+        Width="1000"
+        Loaded="MainAdminWindow_Load"
         ResizeMode="NoResize"
         WindowState="Maximized">
     <Grid Background="White">
@@ -44,13 +45,13 @@
                                     <ColumnDefinition></ColumnDefinition>
                                     <ColumnDefinition></ColumnDefinition>
                                 </Grid.ColumnDefinitions>
-                                <Button Grid.Column="1"
+                                <Button Name="btnLogOut" Grid.Column="1"
                                         Width="80"
                                         Margin="10"
                                         Content="Log out"
                                         IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
                                         Style="{StaticResource MaterialDesignPaperButton}"
-                                        ToolTip="Resource name: MaterialDesignPaperButton" />
+                                        ToolTip="Resource name: MaterialDesignPaperButton" Click="btnLogOut_Click" />
                             </Grid>
                         </Grid>
                         <DataGrid CanUserAddRows="True"
@@ -99,9 +100,10 @@
                                         <ColumnDefinition></ColumnDefinition>
                                     </Grid.ColumnDefinitions>
                                     <Button Grid.Column="0"
+                                            Name="btnAddNewBook"
                                             IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
                                             Style="{StaticResource MaterialDesignFloatingActionMiniSecondaryLightButton}"
-                                            ToolTip="MaterialDesignFloatingActionMiniSecondaryLightButton">
+                                            ToolTip="MaterialDesignFloatingActionMiniSecondaryLightButton" Click="btnAddNewBook_Click">
                                         <materialDesign:PackIcon Kind="Plus" />
                                     </Button>
 
@@ -110,43 +112,43 @@
                             </Grid>
 
                         </Grid>
-                        <ScrollViewer HorizontalScrollBarVisibility="Auto">
+                        <ScrollViewer VerticalScrollBarVisibility="Visible"  HorizontalScrollBarVisibility="Auto">
                             <DataGrid CanUserAddRows="True"
                                       CanUserDeleteRows="True"
-                                      x:Name="dtBookingDetails"
+                                      x:Name="dgBookList"
                                       SelectionMode="Extended"
                                       SelectionUnit="FullRow"
                                       AutoGenerateColumns="False"
                                       IsReadOnly="True">
                                 <DataGrid.Columns>
-                                    <DataGridTextColumn Header="BookId"
-                                                        Binding="{Binding BookingReservationID}" />
+                                    <DataGridTextColumn Header="ID"
+                                                        Binding="{Binding BookId}" />
                                     <DataGridTextColumn Header="Book Name"
-                                                        Binding="{Binding RoomInformation.RoomNumber}" />
+                                                        Binding="{Binding BookName}" />
                                     <DataGridTextColumn Header="Book Description"
-                                                        Binding="{Binding BookingReservation.BookingDate}" />
+                                                        Binding="{Binding BookDescription}" />
                                     <DataGridTextColumn Header="Author"
-                                                        Binding="{Binding StartDate}" />
+                                                        Binding="{Binding Author.AuthorName}" />
                                     <DataGridTextColumn Header="Publication Date"
-                                                        Binding="{Binding StartDate}" />
+                                                        Binding="{Binding PublicationDate}" />
                                     <DataGridTextColumn Header="Unit Price"
-                                                        Binding="{Binding EndDate}" />
+                                                        Binding="{Binding Price}" />
                                     <DataGridTextColumn Header="Quantity"
-                                                        Binding="{Binding BookingReservation.TotalPrice}" />
+                                                        Binding="{Binding Quantity}" />
                                     <DataGridTextColumn Header="Category"
-                                                        Binding="{Binding BookingReservation.Customer.CustomerFullName}" />
+                                                        Binding="{Binding BookCategory.BookGenreType}" />
                                     <DataGridTextColumn Header="Publisher"
-                                                        Binding="{Binding BookingReservation.BookingStatus}" />
+                                                        Binding="{Binding Publisher.PublisherName}" />
                                     <DataGridTemplateColumn Header="Action">
                                         <DataGridTemplateColumn.CellTemplate>
                                             <DataTemplate>
                                                 <StackPanel Orientation="Horizontal">
-                                                    <Button Content="Decline"
-                                                            CommandParameter="{Binding BookingReservationID}"
-                                                            Margin="5" />
-                                                    <Button Content="Confirm"
-                                                            CommandParameter="{Binding BookingReservationID}"
-                                                            Margin="5" />
+                                                    <Button Name="btnEditBook" Content="Edit"
+                                                            CommandParameter="{Binding BookId}"
+                                                            Margin="5" Click="btnEditBook_Click"/>
+                                                    <Button Name="btnDeleteBook" Content="Delete"
+                                                            CommandParameter="{Binding BookId}"
+                                                            Margin="5" Click="btnDeleteBook_Click"/>
                                                 </StackPanel>
                                             </DataTemplate>
                                         </DataGridTemplateColumn.CellTemplate>
@@ -190,20 +192,19 @@
 
                         </Grid>
                         <ScrollViewer HorizontalScrollBarVisibility="Auto">
-                            <DataGrid CanUserAddRows="True"
+                            <DataGrid x:Name="dgBookCategoryList" CanUserAddRows="True"
                                       CanUserDeleteRows="True"
-                                      x:Name="dtBookCategoryDetails"
                                       SelectionMode="Extended"
                                       SelectionUnit="FullRow"
                                       AutoGenerateColumns="False"
                                       IsReadOnly="True">
                                 <DataGrid.Columns>
                                     <DataGridTextColumn Header="BookCategoryId"
-                                                        Binding="{Binding BookingReservationID}" />
+                                                        Binding="{Binding BookCategoryId}" />
                                     <DataGridTextColumn Header="BookGenreType"
-                                                        Binding="{Binding RoomInformation.RoomNumber}" />
+                                                        Binding="{Binding BookGenreType}" />
                                     <DataGridTextColumn Header="Description"
-                                                        Binding="{Binding BookingReservation.BookingDate}" />
+                                                        Binding="{Binding Description}" />
                                     <DataGridTemplateColumn Header="Action">
                                         <DataGridTemplateColumn.CellTemplate>
                                             <DataTemplate>
@@ -260,11 +261,10 @@
                         <ScrollViewer HorizontalScrollBarVisibility="Auto">
                             <DataGrid CanUserAddRows="True"
                                       CanUserDeleteRows="True"
-                                      x:Name="dtOrder"
+                                      x:Name="dgOrderDetailViewList"
                                       SelectionMode="Extended"
                                       SelectionUnit="FullRow"
                                       AutoGenerateColumns="False"
-                                      d:ItemsSource="{d:SampleData ItemCount=5}"
                                       IsReadOnly="True">
                                 <DataGrid.Columns>
                                     <DataGridTextColumn Header="ID"
@@ -272,7 +272,7 @@
                                     <DataGridTextColumn Header="OrderDate"
                                                         Binding="{Binding OrderDate}" />
                                     <DataGridTextColumn Header="Customer Name"
-                                                        Binding="{Binding FullName}" />
+                                                        Binding="{Binding CustomerName}" />
                                     <DataGridTextColumn Header="Quantity"
                                                         Binding="{Binding Quantity}" />
                                     <DataGridTextColumn Header="Total price"
@@ -338,7 +338,7 @@
                                     <ColumnDefinition></ColumnDefinition>
                                     <ColumnDefinition></ColumnDefinition>
                                 </Grid.ColumnDefinitions>
-                                <Button Grid.Column="0"
+                                <Button Name="btnAddNewUser" Grid.Column="0"
                                         IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
                                         Style="{StaticResource MaterialDesignFloatingActionMiniSecondaryLightButton}"
                                         ToolTip="MaterialDesignFloatingActionMiniSecondaryLightButton">
@@ -351,37 +351,35 @@
                         <ScrollViewer HorizontalScrollBarVisibility="Auto">
                             <DataGrid CanUserAddRows="True"
                                       CanUserDeleteRows="True"
-                                      x:Name="dtUserManagement"
+                                      x:Name="dgUserList"
                                       SelectionMode="Extended"
                                       SelectionUnit="FullRow"
                                       AutoGenerateColumns="False"
                                       IsReadOnly="True">
                                 <DataGrid.Columns>
-                                    <DataGridTextColumn Header="UserId"
-                                                        Binding="{Binding BookingReservationID}" />
+                                    <DataGridTextColumn Header="ID"
+                                                        Binding="{Binding UserId}" />
                                     <DataGridTextColumn Header="FullName"
-                                                        Binding="{Binding RoomInformation.RoomNumber}" />
-                                    <DataGridTextColumn Header="Gender"
-                                                        Binding="{Binding BookingReservation.BookingDate}" />
+                                                        Binding="{Binding FullName}" />
                                     <DataGridTextColumn Header="DateOfBirth"
-                                                        Binding="{Binding RoomInformation.RoomNumber}" />
+                                                        Binding="{Binding DateOfBirth}" />
                                     <DataGridTextColumn Header="Email"
-                                                        Binding="{Binding BookingReservation.BookingDate}" />
+                                                        Binding="{Binding Email}" />
                                     <DataGridTextColumn Header="PhoneNumber"
-                                                        Binding="{Binding BookingReservation.BookingDate}" />
+                                                        Binding="{Binding PhoneNumber}" />
                                     <DataGridTextColumn Header="PasswordHash"
-                                                        Binding="{Binding BookingReservation.BookingDate}" />
+                                                        Binding="{Binding PasswordHash}" />
                                     <DataGridTextColumn Header="Role"
-                                                        Binding="{Binding BookingReservation.BookingDate}" />
+                                                        Binding="{Binding Role.RoleName}" />
                                     <DataGridTemplateColumn Header="Action">
                                         <DataGridTemplateColumn.CellTemplate>
                                             <DataTemplate>
                                                 <StackPanel Orientation="Horizontal">
-                                                    <Button Content="Decline"
-                                                            CommandParameter="{Binding BookingReservationID}"
+                                                    <Button Name="btnEditUser" Content="Edit"
+                                                            CommandParameter="{Binding UserId}"
                                                             Margin="5" />
-                                                    <Button Content="Confirm"
-                                                            CommandParameter="{Binding BookingReservationID}"
+                                                    <Button Name="btnDeleteUser" Content="Delete"
+                                                            CommandParameter="{Binding UserId}"
                                                             Margin="5" />
                                                 </StackPanel>
                                             </DataTemplate>
@@ -424,10 +422,10 @@
                                     <ColumnDefinition></ColumnDefinition>
                                     <ColumnDefinition></ColumnDefinition>
                                 </Grid.ColumnDefinitions>
-                                <Button Grid.Column="0"
+                                <Button Name="btnAddNewRole" Grid.Column="0"
                                         IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
                                         Style="{StaticResource MaterialDesignFloatingActionMiniSecondaryLightButton}"
-                                        ToolTip="MaterialDesignFloatingActionMiniSecondaryLightButton">
+                                        ToolTip="MaterialDesignFloatingActionMiniSecondaryLightButton" Height="40" VerticalAlignment="Top" Click="btnAddNewRole_Click">
                                     <materialDesign:PackIcon Kind="Plus" />
                                 </Button>
 
@@ -437,28 +435,28 @@
                         <ScrollViewer HorizontalScrollBarVisibility="Auto">
                             <DataGrid CanUserAddRows="True"
                                       CanUserDeleteRows="True"
-                                      x:Name="dtBookingDetailss"
+                                      x:Name="dgRoleList"
                                       SelectionMode="Extended"
                                       SelectionUnit="FullRow"
                                       AutoGenerateColumns="False"
                                       IsReadOnly="True">
                                 <DataGrid.Columns>
                                     <DataGridTextColumn Header="ID"
-                                                        Binding="{Binding BookingReservationID}" />
+                                                        Binding="{Binding RoleId}" />
                                     <DataGridTextColumn Header="Role Name"
-                                                        Binding="{Binding RoomInformation.RoomNumber}" />
+                                                        Binding="{Binding RoleName}" />
                                     <DataGridTextColumn Header="Description"
-                                                        Binding="{Binding BookingReservation.BookingDate}" />
+                                                        Binding="{Binding RoleDescription}" />
 
                                     <DataGridTemplateColumn Header="Action">
                                         <DataGridTemplateColumn.CellTemplate>
                                             <DataTemplate>
                                                 <StackPanel Orientation="Horizontal">
-                                                    <Button Content="Decline"
-                                                            CommandParameter="{Binding BookingReservationID}"
+                                                    <Button Name="btnEditRole" Content="Edit"
+                                                            CommandParameter="{Binding RoleId}"
                                                             Margin="5" />
-                                                    <Button Content="Confirm"
-                                                            CommandParameter="{Binding BookingReservationID}"
+                                                    <Button Name="btnDeleteRole" Content="Delete"
+                                                            CommandParameter="{Binding RoleId}"
                                                             Margin="5" />
                                                 </StackPanel>
                                             </DataTemplate>

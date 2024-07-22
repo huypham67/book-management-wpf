@@ -27,16 +27,19 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Page Update="Admin\BookDetailWindowNew.xaml">
+    <Compile Update="User\UserWindow.xaml.cs">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Update="Admin\BookDetailWindow.xaml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Page>
     <Page Update="Admin\MainAdminWindow.xaml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Page>
     <Page Update="Admin\RoleDetailWindow.xaml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Page>
-    <Page Update="Admin\UserDetailWindow.xaml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Page>
     <Page Update="LoginWindow.xaml">
@@ -49,5 +52,13 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Page>
   </ItemGroup>
+	<Target Name="PostBuild" AfterTargets="PostBuildEvent">
+		<!-- Command to kill any running instances of WPFApp -->
+		<Exec Command="taskkill /IM WPFApp.exe /F" IgnoreExitCode="true" />
+	</Target>
+	<Target Name="PreBuild" AfterTargets="PreBuildEvent">
+		<!-- Command to kill any running instances of WPFApp -->
+		<Exec Command="taskkill /IM WPFApp.exe /F" IgnoreExitCode="true" />
+	</Target>
 
 </Project>

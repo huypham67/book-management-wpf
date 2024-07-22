@@ -10,9 +10,9 @@ using System.Threading.Tasks;
 
 namespace BusinessObjects.Configuration
 {
-    public class UserConfiguration : IEntityTypeConfiguration<User>
+    public class UserConfiguration : IEntityTypeConfiguration<UserAccount>
     {
-        public void Configure(EntityTypeBuilder<User> builder)
+        public void Configure(EntityTypeBuilder<UserAccount> builder)
         {
             builder.HasKey(e => e.UserId);
             builder.Property(e => e.FullName).IsRequired().HasMaxLength(100);
@@ -25,91 +25,91 @@ namespace BusinessObjects.Configuration
                           .WithMany(r => r.Users)
                           .HasForeignKey(e => e.RoleId);
             builder.HasData(
-            new User
+            new UserAccount
             {
                 UserId = 1,
                 FullName = "John Doe",
                 DateOfBirth = new DateTime(1985, 5, 15),
-                Email = "john.doe@example.com",
+                Email = "doe@gmail.com",
                 PhoneNumber = "123-456-7890",
-                PasswordHash = "hashed_password_1",
+                PasswordHash = "123123",
                 Status = UserStatus.Active,
-                RoleId = 1
+                RoleId = 3
             },
-            new User
+            new UserAccount
             {
                 UserId = 2,
                 FullName = "Jane Smith",
                 DateOfBirth = new DateTime(1990, 10, 25),
-                Email = "jane.smith@example.com",
+                Email = "jane@gmail.com",
                 PhoneNumber = "987-654-3210",
-                PasswordHash = "hashed_password_2",
+                PasswordHash = "123123",
                 Status = UserStatus.Deleted,
-                RoleId = 2
+                RoleId = 1
             },
-            new User
+            new UserAccount
             {
                 UserId = 3,
                 FullName = "Alice Johnson",
                 DateOfBirth = new DateTime(1988, 3, 22),
-                Email = "alice.johnson@example.com",
+                Email = "johnson@example.com",
                 PhoneNumber = "555-123-4567",
-                PasswordHash = "hashed_password_3",
+                PasswordHash = "123123",
                 Status = UserStatus.Active,
-                RoleId = 2
+                RoleId = 1
             },
-            new User
+            new UserAccount
             {
                 UserId = 4,
                 FullName = "Bob Brown",
                 DateOfBirth = new DateTime(1975, 12, 10),
-                Email = "bob.brown@example.com",
+                Email = "bob@gmail.com",
                 PhoneNumber = "555-987-6543",
-                PasswordHash = "hashed_password_4",
+                PasswordHash = "123123",
                 Status = UserStatus.Deleted,
-                RoleId = 1
+                RoleId = 3
             },
-            new User
+            new UserAccount
             {
                 UserId = 5,
                 FullName = "Carol White",
                 DateOfBirth = new DateTime(1995, 7, 30),
-                Email = "carol.white@example.com",
+                Email = "white@example.com",
                 PhoneNumber = "555-654-3210",
-                PasswordHash = "hashed_password_5",
+                PasswordHash = "123123",
                 Status = UserStatus.Active,
                 RoleId = 2
             },
-            new User
+            new UserAccount
             {
                 UserId = 6,
                 FullName = "David Green",
                 DateOfBirth = new DateTime(1982, 11, 5),
-                Email = "david.green@example.com",
+                Email = "green@example.com",
                 PhoneNumber = "555-321-9876",
-                PasswordHash = "hashed_password_6",
+                PasswordHash = "123",
                 Status = UserStatus.Active,
-                RoleId = 1
+                RoleId = 2
             },
-            new User
+            new UserAccount
             {
                 UserId = 7,
                 FullName = "Eva Black",
                 DateOfBirth = new DateTime(2000, 4, 18),
-                Email = "eva.black@example.com",
+                Email = "black@example.com",
                 PhoneNumber = "555-789-1234",
-                PasswordHash = "hashed_password_7",
+                PasswordHash = "123123",
                 Status = UserStatus.Deleted,
-                RoleId = 2
+                RoleId = 1
             },
-            new User
+            new UserAccount
             {
                 UserId = 8,
                 FullName = "Frank Blue",
                 DateOfBirth = new DateTime(1998, 2, 14),
-                Email = "frank.blue@example.com",
+                Email = "blue@example.com",
                 PhoneNumber = "555-456-7890",
-                PasswordHash = "hashed_password_8",
+                PasswordHash = "123123",
                 Status = UserStatus.Active,
                 RoleId = 1
             }

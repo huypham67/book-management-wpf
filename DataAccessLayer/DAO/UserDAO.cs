@@ -13,34 +13,39 @@ namespace DataAccessLayer.DAO
     public class UserDAO : SingletonBase<UserDAO>
     {
         private BookManagementDbContext _context;
-        public IEnumerable<User> GetUsers()
+        public IEnumerable<UserAccount> GetUsers()
         {
             _context = new();
-            return _context.Users;
+            return _context.Users.Include(u => u.Role);
         }
-        public User? GetUserById(int id)
+        public UserAccount? GetUserById(int id)
         {
             _context = new();
             return _context.Users.SingleOrDefault(u => u.UserId == id);
         }
-        public User? GetUserByEmail(string email)
+        public UserAccount? GetUserByEmail(string email)
         {
             _context = new();
             return _context.Users.FirstOrDefault(u => u.Email == email);
         }
-        public void AddUser(User u)
+        public UserAccount? CheckLogin(string email, string password)
+        {
+            _context = new();
+            return _context.Users.FirstOrDefault(u => u.Email == email && u.PasswordHash == password);
+        }
+        public void AddUser(UserAccount u)
         {
             _context = new();
             _context.Add(u);
             _context.SaveChanges();
         }
-        public void UpdateUser(User u)
+        public void UpdateUser(UserAccount u)
         {
             _context = new();
             _context.Update(u);
             _context.SaveChanges();
         }
-        public void DeleteUser(User u)
+        public void DeleteUser(UserAccount u)
         {
             _context = new();
             _context.Remove(u);

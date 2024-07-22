@@ -208,7 +208,7 @@
                                     <ColumnDefinition></ColumnDefinition>
                                     <ColumnDefinition></ColumnDefinition>
                                 </Grid.ColumnDefinitions>
-                                <Button VerticalAlignment="Top"
+                                <Button Name="btnChangePassword" VerticalAlignment="Top"
                                         HorizontalAlignment="Center"
                                         Width="151"
                                         Content="Change password"
@@ -216,7 +216,7 @@
                                         Style="{StaticResource MaterialDesignPaperButton}"
                                         ToolTip="Resource name: MaterialDesignPaperButton"
                                          />
-                                <Button Grid.Column="1"
+                                <Button Name="btnUpdateProfile" Grid.Column="1"
                                         VerticalAlignment="Top"
                                         HorizontalAlignment="Right"
                                         Width="80"
@@ -225,7 +225,7 @@
                                         Style="{StaticResource MaterialDesignPaperButton}"
                                         ToolTip="Resource name: MaterialDesignPaperButton"
                                          />
-                                <Button Grid.Column="2"
+                                <Button Name="btnLogOut" Grid.Column="2"
                                         VerticalAlignment="Top"
                                         HorizontalAlignment="Right"
                                         Width="80"
@@ -266,7 +266,7 @@
                                         Margin="10"
                                         Style="{StaticResource OrangeBorderStyle}">
                                     <Grid>
-                                        <TextBlock Text="{Binding FullName}" />
+                                        <TextBlock IsEnabled="False" Text="{Binding FullName}" />
                                     </Grid>
                                 </Border>
 
@@ -283,7 +283,7 @@
                                         Margin="10"
                                         Style="{StaticResource OrangeBorderStyle}">
                                     <Grid>
-                                        <DatePicker SelectedDate="{Binding DateOfBirth}" />
+                                        <DatePicker IsEnabled="False" Name="dpDateOfBirth" SelectedDate="{Binding DateOfBirth}" />
                                     </Grid>
                                 </Border>
 
@@ -298,7 +298,7 @@
                                         Margin="10"
                                         Style="{StaticResource OrangeBorderStyle}">
                                     <Grid>
-                                        <TextBlock Text="{Binding FullName}" />
+                                        <TextBlock IsEnabled="False" Name="txtEmail" Text="{Binding Email}" />
                                     </Grid>
                                 </Border>
 
@@ -313,7 +313,7 @@
                                         Margin="10"
                                         Style="{StaticResource OrangeBorderStyle}">
                                     <Grid>
-                                        <TextBlock Text="{Binding FullName}" />
+                                        <TextBlock IsEnabled="False" Name="txtPhoneNumber" Text="{Binding FullName}" />
                                     </Grid>
                                 </Border>
 
@@ -321,14 +321,14 @@
                                 <Grid Grid.Row="4"
                                       Grid.Column="0"
                                       Margin="10">
-                                    <TextBlock FontSize="15">Role</TextBlock>
+                                    <TextBlock Name="txtFullName" FontSize="15">Role</TextBlock>
                                 </Grid>
                                 <Border Grid.Row="4"
                                         Grid.Column="1"
                                         Margin="10"
                                         Style="{StaticResource OrangeBorderStyle}">
                                     <Grid>
-                                        <TextBlock Text="{Binding FullName}" />
+                                        <TextBlock IsEnabled="False" Name="txtRole" Text="{Binding Role.RoleName}" />
                                     </Grid>
                                 </Border>
 

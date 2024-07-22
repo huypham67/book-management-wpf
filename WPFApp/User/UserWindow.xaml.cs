@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BusinessObjects.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,9 +20,12 @@ namespace WPFApp.User
     /// </summary>
     public partial class UserWindow : Window
     {
-        public UserWindow()
+        private UserAccount _userAccount;
+        public UserWindow(UserAccount userAccount)
         {
             InitializeComponent();
+            _userAccount = userAccount;
+            this.DataContext = _userAccount;
         }
 
         

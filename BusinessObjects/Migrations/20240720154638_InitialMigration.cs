@@ -165,8 +165,7 @@ namespace BusinessObjects.Migrations
                     OrderId = table.Column<int>(type: "int", nullable: false),
                     BookId = table.Column<int>(type: "int", nullable: false),
                     Quantity = table.Column<int>(type: "int", nullable: false),
-                    UnitPrice = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
-                    Discount = table.Column<decimal>(type: "decimal(18,2)", nullable: false)
+                    UnitPrice = table.Column<decimal>(type: "decimal(18,2)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -235,8 +234,9 @@ namespace BusinessObjects.Migrations
                 columns: new[] { "RoleId", "RoleDescription", "RoleName" },
                 values: new object[,]
                 {
-                    { 1, "Administrator role", "Admin" },
-                    { 2, "Customer role", "User" }
+                    { 1, "Customer role", "User" },
+                    { 2, "Author role", "Author" },
+                    { 3, "Publisher role", "Publisher" }
                 });
 
             migrationBuilder.InsertData(
@@ -259,14 +259,14 @@ namespace BusinessObjects.Migrations
                 columns: new[] { "UserId", "DateOfBirth", "Email", "FullName", "PasswordHash", "PhoneNumber", "RoleId", "Status" },
                 values: new object[,]
                 {
-                    { 1, new DateTime(1985, 5, 15, 0, 0, 0, 0, DateTimeKind.Unspecified), "john.doe@example.com", "John Doe", "hashed_password_1", "123-456-7890", 1, 0 },
-                    { 2, new DateTime(1990, 10, 25, 0, 0, 0, 0, DateTimeKind.Unspecified), "jane.smith@example.com", "Jane Smith", "hashed_password_2", "987-654-3210", 2, 1 },
-                    { 3, new DateTime(1988, 3, 22, 0, 0, 0, 0, DateTimeKind.Unspecified), "alice.johnson@example.com", "Alice Johnson", "hashed_password_3", "555-123-4567", 2, 0 },
-                    { 4, new DateTime(1975, 12, 10, 0, 0, 0, 0, DateTimeKind.Unspecified), "bob.brown@example.com", "Bob Brown", "hashed_password_4", "555-987-6543", 1, 1 },
-                    { 5, new DateTime(1995, 7, 30, 0, 0, 0, 0, DateTimeKind.Unspecified), "carol.white@example.com", "Carol White", "hashed_password_5", "555-654-3210", 2, 0 },
-                    { 6, new DateTime(1982, 11, 5, 0, 0, 0, 0, DateTimeKind.Unspecified), "david.green@example.com", "David Green", "hashed_password_6", "555-321-9876", 1, 0 },
-                    { 7, new DateTime(2000, 4, 18, 0, 0, 0, 0, DateTimeKind.Unspecified), "eva.black@example.com", "Eva Black", "hashed_password_7", "555-789-1234", 2, 1 },
-                    { 8, new DateTime(1998, 2, 14, 0, 0, 0, 0, DateTimeKind.Unspecified), "frank.blue@example.com", "Frank Blue", "hashed_password_8", "555-456-7890", 1, 0 }
+                    { 1, new DateTime(1985, 5, 15, 0, 0, 0, 0, DateTimeKind.Unspecified), "doe@gmail.com", "John Doe", "123123", "123-456-7890", 3, 0 },
+                    { 2, new DateTime(1990, 10, 25, 0, 0, 0, 0, DateTimeKind.Unspecified), "jane@gmail.com", "Jane Smith", "123123", "987-654-3210", 1, 1 },
+                    { 3, new DateTime(1988, 3, 22, 0, 0, 0, 0, DateTimeKind.Unspecified), "johnson@example.com", "Alice Johnson", "123123", "555-123-4567", 1, 0 },
+                    { 4, new DateTime(1975, 12, 10, 0, 0, 0, 0, DateTimeKind.Unspecified), "bob@gmail.com", "Bob Brown", "123123", "555-987-6543", 3, 1 },
+                    { 5, new DateTime(1995, 7, 30, 0, 0, 0, 0, DateTimeKind.Unspecified), "white@example.com", "Carol White", "123123", "555-654-3210", 2, 0 },
+                    { 6, new DateTime(1982, 11, 5, 0, 0, 0, 0, DateTimeKind.Unspecified), "green@example.com", "David Green", "123", "555-321-9876", 2, 0 },
+                    { 7, new DateTime(2000, 4, 18, 0, 0, 0, 0, DateTimeKind.Unspecified), "black@example.com", "Eva Black", "123123", "555-789-1234", 1, 1 },
+                    { 8, new DateTime(1998, 2, 14, 0, 0, 0, 0, DateTimeKind.Unspecified), "blue@example.com", "Frank Blue", "123123", "555-456-7890", 1, 0 }
                 });
 
             migrationBuilder.InsertData(
@@ -286,17 +286,17 @@ namespace BusinessObjects.Migrations
 
             migrationBuilder.InsertData(
                 table: "OrderDetails",
-                columns: new[] { "BookId", "OrderId", "Discount", "Quantity", "UnitPrice" },
+                columns: new[] { "BookId", "OrderId", "Quantity", "UnitPrice" },
                 values: new object[,]
                 {
-                    { 1, 1, 0m, 2, 19.99m },
-                    { 3, 1, 1.00m, 1, 15.99m },
-                    { 2, 2, 0m, 1, 29.99m },
-                    { 4, 3, 0.50m, 1, 12.99m },
-                    { 5, 4, 0m, 3, 18.99m },
-                    { 6, 5, 2.00m, 2, 22.99m },
-                    { 7, 6, 0m, 1, 25.99m },
-                    { 8, 7, 5.00m, 1, 30.99m }
+                    { 1, 1, 2, 19.99m },
+                    { 3, 1, 1, 15.99m },
+                    { 2, 2, 1, 29.99m },
+                    { 4, 3, 1, 12.99m },
+                    { 5, 4, 3, 18.99m },
+                    { 6, 5, 2, 22.99m },
+                    { 7, 6, 1, 25.99m },
+                    { 8, 7, 1, 30.99m }
                 });
 
             migrationBuilder.CreateIndex(
