@@ -25,5 +25,9 @@ namespace Repositories.UserRepositories
 
         public void DeleteUser(UserAccount user)
                         => UserDAO.Instance.DeleteUser(user);
+        public bool ChangePassword(int userId, string newPassword)
+                        => UserDAO.Instance.ChangePassword(userId, newPassword);
+        public bool CheckCurrentPassword(int userId, string currentPassword)
+                        => UserDAO.Instance.CheckCurrentPassword(userId, currentPassword);
     }
 }

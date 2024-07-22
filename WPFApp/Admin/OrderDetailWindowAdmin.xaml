@@ -5,8 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPFApp"
         mc:Ignorable="d"
+        Loaded="OrderDetailWindowAdmin_Load"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-        Title="Order detail"
+        Title="Order Detail"
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="NoResize"
         Height="450"
         Width="800">
     <Grid Background="LightGray">
@@ -48,7 +51,6 @@
                 </TextBlock.Foreground>
             </TextBlock>
         </Grid>
-        <Label Content="Label" />
         <Label Content="Order ID:"
                FontWeight="Bold"
                HorizontalAlignment="Left"
@@ -57,7 +59,9 @@
                Grid.Row="1"
                VerticalAlignment="Center"
                Width="64" />
-        <TextBox HorizontalAlignment="Left"
+        <TextBox Name="txtOrderId" HorizontalAlignment="Left"
+                 Text="{Binding SelectedOrder.OrderId}"
+                 IsEnabled="False"
                  Height="24"
                  Margin="141,0,0,0"
                  Grid.Row="1"
@@ -73,6 +77,8 @@
                VerticalAlignment="Center"
                Width="110" />
         <TextBox HorizontalAlignment="Left"
+                 Text="{Binding SelectedOrder.CustomerName}"
+                 IsEnabled="False"
                  Height="24"
                  Margin="563,5,0,0"
                  Grid.Row="1"
@@ -83,31 +89,30 @@
                FontWeight="Bold"
                HorizontalAlignment="Left"
                Height="24"
-               Margin="51,10,0,0"
+               Margin="51,7,0,0"
                Grid.Row="2"
                VerticalAlignment="Top"
                Width="85" />
         <DatePicker Name="dpPublicationDate"
-                    SelectedDate="{Binding PublicationDate}"
+                    SelectedDate="{Binding SelectedOrder.OrderDate}"
+                    IsEnabled="False"
                     Foreground="Black"
                     FontWeight="Bold"
-                    Margin="141,6,470,10"
+                    Margin="141,7,470,9"
                     Grid.Row="2" />
         <Label Content="Status: "
                FontWeight="Bold"
                HorizontalAlignment="Left"
-               Margin="433,13,0,3"
+               Margin="433,8,0,8"
                Grid.Row="2"
                Width="64" />
-        <TextBox HorizontalAlignment="Left"
+        <ComboBox Name="cboBoxOrderStatus" HorizontalAlignment="Left"
+                 SelectedValue="{Binding SelectedOrder.OrderStatus}"
                  Height="24"
                  Margin="563,6,0,0"
                  Grid.Row="2"
-                 TextWrapping="Wrap"
                  VerticalAlignment="Top"
                  Width="189" />
-
-
         <Grid Grid.Row="3">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="41*" />
@@ -141,6 +146,8 @@
             </Label.RenderTransform>
         </Label>
         <TextBox HorizontalAlignment="Left"
+                 Text="{Binding SelectedOrder.Quantity}"
+                 IsEnabled="False"
                  Height="24"
                  Margin="141,5,0,0"
                  Grid.Row="3"
@@ -148,6 +155,8 @@
                  VerticalAlignment="Top"
                  Width="189" />
         <TextBox HorizontalAlignment="Left"
+                 Text="{Binding SelectedOrder.TotalPrice}"
+                 IsEnabled="False"
                  Height="24"
                  Margin="563,5,0,0"
                  Grid.Row="3"
@@ -159,36 +168,32 @@
             <ScrollViewer HorizontalScrollBarVisibility="Auto">
                 <DataGrid CanUserAddRows="True"
                           CanUserDeleteRows="True"
-                          x:Name="dtBookCategoryDetails"
+                          x:Name="dgOrderDetailList"
                           SelectionMode="Extended"
                           SelectionUnit="FullRow"
                           AutoGenerateColumns="False"
+                          ItemsSource="{Binding OrderDetails}"
                           IsReadOnly="True"
                           Width="750"
                           Height="130"
                           Background="LightGray"
                           Margin="20 0 0 0">
                     <DataGrid.Columns>
-                        <DataGridTextColumn Header="BookCategoryId"
-                                            Binding="{Binding BookingReservationID}" />
-                        <DataGridTextColumn Header="BookGenreType"
-                                            Binding="{Binding RoomInformation.RoomNumber}" />
-                        <DataGridTextColumn Header="Description"
-                                            Binding="{Binding BookingReservation.BookingDate}" />
-                        <DataGridTemplateColumn Header="Action">
+                        <!--<DataGridTemplateColumn Header="No.">
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
-                                    <StackPanel Orientation="Horizontal">
-                                        <Button Content="Decline"
-                                                CommandParameter="{Binding BookingReservationID}"
-                                                Margin="5" />
-                                        <Button Content="Confirm"
-                                                CommandParameter="{Binding BookingReservationID}"
-                                                Margin="5" />
-                                    </StackPanel>
+                                    <TextBlock Text="{Binding RelativeSource={RelativeSource AncestorType=DataGridRow}, Path=DataContext, Converter={StaticResource RowIndexConverter}}" />
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellTemplate>
-                        </DataGridTemplateColumn>
+                        </DataGridTemplateColumn>-->
+                        <DataGridTextColumn Header="Book Name"
+                                            Binding="{Binding Book.BookName}" />
+                        <DataGridTextColumn Header="Quantity"
+                                            Binding="{Binding Quantity}" />
+                        <DataGridTextColumn Header="Unit Price"
+                                            Binding="{Binding UnitPrice}" />
+                        <DataGridTextColumn Header="Total Price"
+                                            Binding="{Binding TotalPrice}" />
                     </DataGrid.Columns>
                 </DataGrid>
             </ScrollViewer>
@@ -199,7 +204,7 @@
                 <ColumnDefinition></ColumnDefinition>
                 <ColumnDefinition></ColumnDefinition>
             </Grid.ColumnDefinitions>
-            <Button Grid.Column="0"
+            <Button Name="btnSave" Grid.Column="0"
                     Width="100"
                     Content="Save"
                     Background="Orange"
@@ -207,8 +212,8 @@
                     FontWeight="Bold"
                     IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
                     Style="{StaticResource MaterialDesignPaperLightButton}"
-                    ToolTip="Resource name: MaterialDesignPaperLightButton" />
-            <Button Grid.Column="1"
+                    ToolTip="Resource name: MaterialDesignPaperLightButton" Click="btnSave_Click" />
+            <Button Name="btnClose" Grid.Column="1"
                     Width="100"
                     Content="Close"
                     Background="Orange"
@@ -216,7 +221,7 @@
                     FontWeight="Bold"
                     IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
                     Style="{StaticResource MaterialDesignPaperLightButton}"
-                    ToolTip="Resource name: MaterialDesignPaperLightButton" />
+                    ToolTip="Resource name: MaterialDesignPaperLightButton" Click="btnClose_Click" />
         </Grid>
     </Grid>
 </Window>

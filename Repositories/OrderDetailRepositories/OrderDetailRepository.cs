@@ -10,8 +10,12 @@ namespace Repositories.OrderDetailRepositories
 {
     public class OrderDetailRepository : IOrderDetailRepository
     {
-        public IEnumerable<OrderDetailDto> GetOrderDetailDtos()
-                    => OrderDetailDAO.Instance.GetOrderDetailDtos();
+        public IEnumerable<OrderDetailView> GetOrderDetailViews()
+                    => OrderDetailDAO.Instance.GetOrderDetailViews();
 
+        public OrderDetailView? GetOrderDetailViewByOrderId(int id)
+                    => OrderDetailDAO.Instance.GetOrderDetailViewByOrderId(id);
+        public IEnumerable<OrderDetail> GetOrderDetailListByOrderId(int orderId)
+                    => OrderDetailDAO.Instance.GetOrderDetailListByOrderId(orderId);
     }
 }
