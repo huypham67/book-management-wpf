@@ -1,4 +1,4 @@
-﻿<Window x:Class="WPFApp.Admin.RoleDetailWindow"
+﻿<Window x:Class="WPFApp.Admin.BookCategoryDetailWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -24,11 +24,11 @@
 
         <Grid Grid.Row="0">
             <TextBlock Name="txtBlockHeader"
-                        HorizontalAlignment="Center"
+                       HorizontalAlignment="Center"
                        FontSize="40"
                        FontWeight="Bold"
                        Style="{StaticResource MaterialDesignHeadline2TextBlock}"
-                       Text="ADD NEW ROLE">
+                       Text="ADD NEW BOOK CATEGORY">
                 <TextBlock.Foreground>
                     <LinearGradientBrush StartPoint="0,0"
                                          EndPoint="1,0">
@@ -48,13 +48,13 @@
                     <ColumnDefinition></ColumnDefinition>
                 </Grid.ColumnDefinitions>
                 <TextBox Grid.Column="0"
-                         Name="txtRoleName"
+                         Name="txtBookCategoryName"
                          FontWeight="Bold"
-                         Text="{Binding RoleName}"
+                         Text="{Binding BookGenreType}"
                          VerticalAlignment="Center"
                          Foreground="Black"
-                         materialDesign:HintAssist.Hint="Role Name"
-                         materialDesign:HintAssist.HelperText="Enter role name"
+                         materialDesign:HintAssist.Hint="Book Genre Type"
+                         materialDesign:HintAssist.HelperText="Enter book category name"
                          Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                          Width="300" />
 
@@ -64,14 +64,14 @@
         </Grid>
         <Grid Grid.Row="3">
             <StackPanel VerticalAlignment="Center">
-                <TextBox Name="txtRoleDescription"
-                         Text="{Binding RoleDescription}"
+                <TextBox Name="txtBookCategoryDescription"
+                         Text="{Binding Description}"
                          Height="100"
                          Width="700"
                          VerticalAlignment="Top"
                          FontWeight="Bold"
                          Foreground="Black"
-                         materialDesign:HintAssist.Hint="Role Description"
+                         materialDesign:HintAssist.Hint="Book Category Description"
                          materialDesign:TextFieldAssist.CharacterCounterVisibility="{Binding Path=IsChecked, ElementName=MaterialDesignOutlinedTextBoxTextCountComboBox, Converter={StaticResource BooleanToVisibilityConverter}}"
                          MaxLength="40"
                          Style="{StaticResource MaterialDesignOutlinedTextBox}"
@@ -92,7 +92,8 @@
                 <ColumnDefinition></ColumnDefinition>
                 <ColumnDefinition></ColumnDefinition>
             </Grid.ColumnDefinitions>
-            <Button Name="btnSave" Grid.Column="0"
+            <Button Name="btnSave"
+                    Grid.Column="0"
                     Width="100"
                     Content="Save"
                     Background="Orange"
@@ -100,8 +101,10 @@
                     FontWeight="Bold"
                     IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
                     Style="{StaticResource MaterialDesignPaperLightButton}"
-                    ToolTip="Resource name: MaterialDesignPaperLightButton" Click="btnSave_Click" />
-            <Button x:Name="btnCancel" Grid.Column="1"
+                    ToolTip="Resource name: MaterialDesignPaperLightButton"
+                    Click="btnSave_Click" />
+            <Button x:Name="btnCancel"
+                    Grid.Column="1"
                     Width="100"
                     Content="Cancel"
                     Background="Orange"
@@ -109,7 +112,8 @@
                     FontWeight="Bold"
                     IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
                     Style="{StaticResource MaterialDesignPaperLightButton}"
-                    ToolTip="Resource name: MaterialDesignPaperLightButton" Click="btnCancel_Click" />
+                    ToolTip="Resource name: MaterialDesignPaperLightButton"
+                    Click="btnCancel_Click" />
         </Grid>
     </Grid>
 </Window>

@@ -1,4 +1,5 @@
 ﻿using BusinessObjects.Models;
+using Repositories.RoleRepositories;
 using Repositories.UserRepositories;
 using System;
 using System.Collections.Generic;
@@ -24,6 +25,7 @@ namespace WPFApp.Admin
     public partial class UserDetailWindow : Window
     {
         private IUserRepository _userRepository = new UserRepository();
+        private IRoleRepository _roleRepository = new RoleRepository();
         private UserAccount _selected = null;
 
         public UserDetailWindow(UserAccount user)
@@ -36,9 +38,21 @@ namespace WPFApp.Admin
                 _selected = user;
             }
         }
-        private void RoleDetailWindow_Load(object sender, RoutedEventArgs e)
+        private void UserDetailWindow_Load(object sender, RoutedEventArgs e)
         {
-            
+            LoadUserStatus();
+            LoadUserRole();
+        }
+        private void LoadUserStatus()
+        {
+            cboBoxStatus.ItemsSource = null;
+            cboBoxStatus.ItemsSource = Enum.GetValues(typeof(UserStatus)).Cast<UserStatus>().ToList();
+        }
+        private void LoadUserRole()
+        {
+            cboBoxRole.ItemsSource = null;
+            cboBoxRole.ItemsSource = _roleRepository.GetRoles().ToList();
+
         }
         private void btnSave_Click(object sender, RoutedEventArgs e)
         {

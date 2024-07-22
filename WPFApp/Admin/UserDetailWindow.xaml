@@ -6,8 +6,8 @@
         xmlns:local="clr-namespace:WPFApp"
         mc:Ignorable="d"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-        Loaded="RoleDetailWindow_Load"
-        Title="Add New Customer"
+        Loaded="UserDetailWindow_Load"
+        Title="Add New User"
         Height="450"
         Width="800">
     <Grid Background="LightGray">
@@ -26,6 +26,7 @@
         <Grid Grid.Row="0">
             <TextBlock Name="txtBlockHeader" HorizontalAlignment="Center"
                        FontSize="40"
+                       FontWeight="Bold"
                        Style="{StaticResource MaterialDesignHeadline2TextBlock}"
                        Text="ADD NEW USER">
                 <TextBlock.Foreground>
@@ -129,6 +130,7 @@
                       Foreground="Black"
                       FontWeight="Bold"
                       materialDesign:HintAssist.Hint="Role"
+                      TextSearch.TextPath="RoleName"
                       IsEditable="True"
                       Width="300">
                 <ComboBox.ItemTemplate>

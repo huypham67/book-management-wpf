@@ -29,6 +29,7 @@
         <Grid Grid.Row="0">
             <TextBlock Name="txtBlockHeader" HorizontalAlignment="Center"
                        FontSize="40"
+                       FontWeight="Bold"
                        Style="{StaticResource MaterialDesignHeadline2TextBlock}"
                        Text="ADD NEW BOOK">
                 <TextBlock.Foreground>

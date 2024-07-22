@@ -127,7 +127,7 @@ namespace WPFApp.Admin
             RoleDetailWindow roleDetailWindow = new(null);
             roleDetailWindow.Closed += (s, args) =>
             {
-                LoadBookList();
+                LoadRoleList();
                 dgRoleList.Items.Refresh();
             };
             roleDetailWindow.ShowDialog();
@@ -203,6 +203,18 @@ namespace WPFApp.Admin
                 LoadUserList();
                 dgUserList.Items.Refresh();
             }
+        }
+        private void btnAddNewBookCategory_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+        private void btnEditBookCategory_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+        private void btnDeleteBookCategory_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

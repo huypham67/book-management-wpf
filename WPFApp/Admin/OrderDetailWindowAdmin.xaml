@@ -32,6 +32,7 @@
             </Grid.ColumnDefinitions>
             <TextBlock HorizontalAlignment="Left"
                        FontSize="40"
+                       FontWeight="Bold"
                        Style="{StaticResource MaterialDesignHeadline2TextBlock}"
                        Text="Order Detail "
                        Grid.Column="2"
@@ -86,13 +87,12 @@
                Grid.Row="2"
                VerticalAlignment="Top"
                Width="85" />
-        <TextBox HorizontalAlignment="Left"
-                 Height="24"
-                 Margin="141,6,0,0"
-                 Grid.Row="2"
-                 TextWrapping="Wrap"
-                 VerticalAlignment="Top"
-                 Width="189" />
+        <DatePicker Name="dpPublicationDate"
+                    SelectedDate="{Binding PublicationDate}"
+                    Foreground="Black"
+                    FontWeight="Bold"
+                    Margin="141,6,470,10"
+                    Grid.Row="2" />
         <Label Content="Status: "
                FontWeight="Bold"
                HorizontalAlignment="Left"
