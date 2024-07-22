@@ -171,7 +171,7 @@
             </Grid.ColumnDefinitions>
             <Button Grid.Column="0"
                     Width="100"
-                    Content="Confirm"
+                    Content="Save"
                     Background="Orange"
                     Foreground="white"
                     FontWeight="Bold"
