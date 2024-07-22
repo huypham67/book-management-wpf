@@ -12,7 +12,7 @@
         Style="{StaticResource MaterialDesignWindow}"
         FontFamily="Times New Roman">
 
-    <Grid Background="DimGray">
+    <Grid Background="LightGray">
         <Grid.RowDefinitions>
             <RowDefinition></RowDefinition>
 
@@ -74,7 +74,8 @@
                      Width="300"
                      x:Name="txtEmail"
                      VerticalAlignment="Center"
-                     Foreground="white"
+                     Foreground="Black"
+                     FontWeight="Bold"
                      materialDesign:HintAssist.Hint="Email"
                      materialDesign:HintAssist.HelperText="Input your email"
                      Style="{StaticResource MaterialDesignFloatingHintTextBox}">
@@ -102,7 +103,8 @@
             <PasswordBox Height="50"
                          Width="300"
                          x:Name="txtPassword"
-                         Foreground="white"
+                         Foreground="Black"
+                         FontWeight="Bold"
                          materialDesign:HintAssist.HelperText="At least 10 characters"
                          materialDesign:HintAssist.Hint="Password"
                          materialDesign:PasswordBoxAssist.Password="{Binding Password2, Mode=TwoWay}"

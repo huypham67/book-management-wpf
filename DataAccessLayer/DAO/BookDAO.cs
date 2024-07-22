@@ -41,7 +41,11 @@ namespace DataAccessLayer.DAO
                 _context.Entry(existingBook).CurrentValues.SetValues(book);
                 _context.SaveChanges();
             }
-
+            else
+            {
+                // Handle the case when the book doesn't exist in the database
+                throw new ArgumentException("Book not found");
+            }
         }
         public void DeleteBook(Book book)
         {

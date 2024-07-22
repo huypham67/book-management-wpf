@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BusinessObjects.Migrations
 {
     [DbContext(typeof(BookManagementDbContext))]
-    [Migration("20240720154638_InitialMigration")]
-    partial class InitialMigration
+    [Migration("20240722043714_Initial")]
+    partial class Initial
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -498,7 +498,7 @@ namespace BusinessObjects.Migrations
                         });
                 });
 
-            modelBuilder.Entity("BusinessObjects.Models.OrderDetailView", b =>
+            modelBuilder.Entity("BusinessObjects.Models.OrderDetailDto", b =>
                 {
                     b.Property<string>("CustomerName")
                         .HasColumnType("nvarchar(max)");
@@ -677,7 +677,7 @@ namespace BusinessObjects.Migrations
                         });
                 });
 
-            modelBuilder.Entity("BusinessObjects.Models.User", b =>
+            modelBuilder.Entity("BusinessObjects.Models.UserAccount", b =>
                 {
                     b.Property<int>("UserId")
                         .ValueGeneratedOnAdd()
@@ -840,7 +840,7 @@ namespace BusinessObjects.Migrations
 
             modelBuilder.Entity("BusinessObjects.Models.Order", b =>
                 {
-                    b.HasOne("BusinessObjects.Models.User", "User")
+                    b.HasOne("BusinessObjects.Models.UserAccount", "User")
                         .WithMany("Orders")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -868,7 +868,7 @@ namespace BusinessObjects.Migrations
                     b.Navigation("Order");
                 });
 
-            modelBuilder.Entity("BusinessObjects.Models.User", b =>
+            modelBuilder.Entity("BusinessObjects.Models.UserAccount", b =>
                 {
                     b.HasOne("BusinessObjects.Models.Role", "Role")
                         .WithMany("Users")
@@ -909,7 +909,7 @@ namespace BusinessObjects.Migrations
                     b.Navigation("Users");
                 });
 
-            modelBuilder.Entity("BusinessObjects.Models.User", b =>
+            modelBuilder.Entity("BusinessObjects.Models.UserAccount", b =>
                 {
                     b.Navigation("Orders");
                 });

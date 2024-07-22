@@ -86,6 +86,7 @@ namespace WPFApp.Admin
                     Book book = new Book()
                     {
                         BookId = _selected.BookId,
+                        BookName = txtBookName.Text,
                         BookDescription = txtBookDescription.Text,
                         PublicationDate = dpPublicationDate.SelectedDate ?? DateTime.Now,
                         Price = decimal.Parse(txtPrice.Text.ToString()),

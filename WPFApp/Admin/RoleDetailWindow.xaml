@@ -9,7 +9,7 @@
         Title="Add New Role"
         Height="450"
         Width="800">
-    <Grid Background="DimGray">
+    <Grid Background="LightGray">
         <Grid.RowDefinitions>
             <RowDefinition Height="1.5*"></RowDefinition>
 
@@ -26,6 +26,7 @@
             <TextBlock Name="txtBlockHeader"
                         HorizontalAlignment="Center"
                        FontSize="40"
+                       FontWeight="Bold"
                        Style="{StaticResource MaterialDesignHeadline2TextBlock}"
                        Text="ADD NEW ROLE">
                 <TextBlock.Foreground>
@@ -48,9 +49,10 @@
                 </Grid.ColumnDefinitions>
                 <TextBox Grid.Column="0"
                          Name="txtRoleName"
+                         FontWeight="Bold"
                          Text="{Binding RoleName}"
                          VerticalAlignment="Center"
-                         Foreground="white"
+                         Foreground="Black"
                          materialDesign:HintAssist.Hint="Role Name"
                          materialDesign:HintAssist.HelperText="Enter role name"
                          Style="{StaticResource MaterialDesignFloatingHintTextBox}"
@@ -67,7 +69,8 @@
                          Height="100"
                          Width="700"
                          VerticalAlignment="Top"
-                         Foreground="white"
+                         FontWeight="Bold"
+                         Foreground="Black"
                          materialDesign:HintAssist.Hint="Role Description"
                          materialDesign:TextFieldAssist.CharacterCounterVisibility="{Binding Path=IsChecked, ElementName=MaterialDesignOutlinedTextBoxTextCountComboBox, Converter={StaticResource BooleanToVisibilityConverter}}"
                          MaxLength="40"
@@ -77,7 +80,8 @@
                 <CheckBox x:Name="MaterialDesignOutlinedTextBoxTextCountComboBox"
                           Content="View Text Input Count"
                           Width="700"
-                          Foreground="white"
+                          FontWeight="Bold"
+                          Foreground="Black"
                           FontSize="10" />
             </StackPanel>
         </Grid>

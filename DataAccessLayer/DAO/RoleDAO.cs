@@ -31,13 +31,8 @@ namespace DataAccessLayer.DAO
         public void UpdateRole(Role role)
         {
             _context = new();
-            var existingRole = _context.Books.Find(role.RoleId);
-            if (existingRole != null)
-            {
-                _context.Entry(existingRole).CurrentValues.SetValues(role);
-                _context.SaveChanges();
-            }
-
+            _context.Update(role);
+            _context.SaveChanges();
         }
         public void DeleteRole(Role role)
         {

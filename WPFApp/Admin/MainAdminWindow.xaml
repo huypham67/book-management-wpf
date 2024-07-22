@@ -12,7 +12,7 @@
         Loaded="MainAdminWindow_Load"
         ResizeMode="NoResize"
         WindowState="Maximized">
-    <Grid Background="White">
+    <Grid Background="Black">
 
         <materialDesign:Card>
             <TabControl MinHeight="200"
@@ -267,6 +267,7 @@
                                       SelectionMode="Extended"
                                       SelectionUnit="FullRow"
                                       AutoGenerateColumns="False"
+                                      ItemsSource="{d:SampleData}"
                                       IsReadOnly="True">
                                 <DataGrid.Columns>
                                     <DataGridTextColumn Header="ID"
@@ -294,20 +295,6 @@
                                                                              Height="16"
                                                                              VerticalAlignment="Center" />
                                                 </Button>
-                                            </DataTemplate>
-                                        </DataGridTemplateColumn.CellTemplate>
-                                    </DataGridTemplateColumn>
-                                    <DataGridTemplateColumn Header="Action">
-                                        <DataGridTemplateColumn.CellTemplate>
-                                            <DataTemplate>
-                                                <StackPanel Orientation="Horizontal">
-                                                    <Button Content="Edit"
-                                                            CommandParameter="{Binding BookingReservationID}"
-                                                            Margin="5" />
-                                                    <Button Content="Delete"
-                                                            CommandParameter="{Binding BookingReservationID}"
-                                                            Margin="5" />
-                                                </StackPanel>
                                             </DataTemplate>
                                         </DataGridTemplateColumn.CellTemplate>
                                     </DataGridTemplateColumn>

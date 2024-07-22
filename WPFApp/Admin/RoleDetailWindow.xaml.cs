@@ -33,9 +33,6 @@ namespace WPFApp.Admin
                 _selected = role;
             }
         }
-        private void RoleDetailWindow_Load(object sender, RoutedEventArgs e)
-        {
-        }
 
         private void btnSave_Click(object sender, RoutedEventArgs e)
         {

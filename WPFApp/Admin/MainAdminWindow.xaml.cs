@@ -127,7 +127,7 @@ namespace WPFApp.Admin
             RoleDetailWindow roleDetailWindow = new(null);
             roleDetailWindow.Closed += (s, args) =>
             {
-                LoadBookList();
+                LoadRoleList();
                 dgRoleList.Items.Refresh();
             };
             roleDetailWindow.ShowDialog();
