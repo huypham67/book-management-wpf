@@ -181,10 +181,10 @@
                                     <ColumnDefinition></ColumnDefinition>
                                     <ColumnDefinition></ColumnDefinition>
                                 </Grid.ColumnDefinitions>
-                                <Button Grid.Column="0"
+                                <Button Name="btnAddNewBookCategory" Grid.Column="0"
                                         IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
                                         Style="{StaticResource MaterialDesignFloatingActionMiniSecondaryLightButton}"
-                                        ToolTip="MaterialDesignFloatingActionMiniSecondaryLightButton">
+                                        ToolTip="MaterialDesignFloatingActionMiniSecondaryLightButton" Height="40" VerticalAlignment="Top">
                                     <materialDesign:PackIcon Kind="Plus" />
                                 </Button>
 
@@ -209,12 +209,14 @@
                                         <DataGridTemplateColumn.CellTemplate>
                                             <DataTemplate>
                                                 <StackPanel Orientation="Horizontal">
-                                                    <Button Content="Decline"
+                                                    <Button Name="btnEditBookCategory" Content="Edit"
                                                             CommandParameter="{Binding BookingReservationID}"
-                                                            Margin="5" />
-                                                    <Button Content="Confirm"
+                                                            Margin="5" 
+                                                            Click="btnEditBookCategory_Click"/>
+                                                    <Button Name="btnDeleteBookCategory" Content="Delete"
                                                             CommandParameter="{Binding BookingReservationID}"
-                                                            Margin="5" />
+                                                            Margin="5" 
+                                                            Click="btnDeleteBookCategory_Click"/>
                                                 </StackPanel>
                                             </DataTemplate>
                                         </DataGridTemplateColumn.CellTemplate>
@@ -341,7 +343,8 @@
                                 <Button Name="btnAddNewUser" Grid.Column="0"
                                         IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
                                         Style="{StaticResource MaterialDesignFloatingActionMiniSecondaryLightButton}"
-                                        ToolTip="MaterialDesignFloatingActionMiniSecondaryLightButton">
+                                        ToolTip="MaterialDesignFloatingActionMiniSecondaryLightButton"
+                                        Click="btnAddNewUser_Click">
                                     <materialDesign:PackIcon Kind="Plus" />
                                 </Button>
 
@@ -377,10 +380,12 @@
                                                 <StackPanel Orientation="Horizontal">
                                                     <Button Name="btnEditUser" Content="Edit"
                                                             CommandParameter="{Binding UserId}"
-                                                            Margin="5" />
+                                                            Margin="5" 
+                                                            Click="btnEditUser_Click"/>
                                                     <Button Name="btnDeleteUser" Content="Delete"
                                                             CommandParameter="{Binding UserId}"
-                                                            Margin="5" />
+                                                            Margin="5" 
+                                                            Click="btnDeleteUser_Click"/>
                                                 </StackPanel>
                                             </DataTemplate>
                                         </DataGridTemplateColumn.CellTemplate>
@@ -425,7 +430,8 @@
                                 <Button Name="btnAddNewRole" Grid.Column="0"
                                         IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
                                         Style="{StaticResource MaterialDesignFloatingActionMiniSecondaryLightButton}"
-                                        ToolTip="MaterialDesignFloatingActionMiniSecondaryLightButton" Height="40" VerticalAlignment="Top" Click="btnAddNewRole_Click">
+                                        ToolTip="MaterialDesignFloatingActionMiniSecondaryLightButton" Height="40" VerticalAlignment="Top" 
+                                        Click="btnAddNewRole_Click">
                                     <materialDesign:PackIcon Kind="Plus" />
                                 </Button>
 
@@ -454,10 +460,12 @@
                                                 <StackPanel Orientation="Horizontal">
                                                     <Button Name="btnEditRole" Content="Edit"
                                                             CommandParameter="{Binding RoleId}"
-                                                            Margin="5" />
+                                                            Margin="5" 
+                                                            Click="btnEditRole_Click"/>
                                                     <Button Name="btnDeleteRole" Content="Delete"
                                                             CommandParameter="{Binding RoleId}"
-                                                            Margin="5" />
+                                                            Margin="5" 
+                                                            Click="btnDeleteRole_Click"/>
                                                 </StackPanel>
                                             </DataTemplate>
                                         </DataGridTemplateColumn.CellTemplate>

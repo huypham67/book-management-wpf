@@ -48,6 +48,7 @@
                 </Grid.ColumnDefinitions>
                 <TextBox Grid.Column="0"
                          Name="txtRoleName"
+                         Text="{Binding RoleName}"
                          VerticalAlignment="Center"
                          Foreground="white"
                          materialDesign:HintAssist.Hint="Role Name"
@@ -62,6 +63,7 @@
         <Grid Grid.Row="3">
             <StackPanel VerticalAlignment="Center">
                 <TextBox Name="txtRoleDescription"
+                         Text="{Binding RoleDescription}"
                          Height="100"
                          Width="700"
                          VerticalAlignment="Top"
@@ -71,8 +73,7 @@
                          MaxLength="40"
                          Style="{StaticResource MaterialDesignOutlinedTextBox}"
                          TextWrapping="Wrap"
-                         VerticalScrollBarVisibility="Auto"
-                         Text="{Binding RoomDescription}" />
+                         VerticalScrollBarVisibility="Auto" />
                 <CheckBox x:Name="MaterialDesignOutlinedTextBoxTextCountComboBox"
                           Content="View Text Input Count"
                           Width="700"

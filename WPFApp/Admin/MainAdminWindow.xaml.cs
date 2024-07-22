@@ -204,5 +204,17 @@ namespace WPFApp.Admin
                 dgUserList.Items.Refresh();
             }
         }
+        private void btnAddNewBookCategory_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+        private void btnEditBookCategory_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+        private void btnDeleteBookCategory_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
