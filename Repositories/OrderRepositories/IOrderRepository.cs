@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BusinessObjects.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,5 +9,6 @@ namespace Repositories.OrderRepositories
 {
     public interface IOrderRepository
     {
+        void UpdateOrderStatus(int? orderId, OrderStatus newOrderStatus);
     }
 }

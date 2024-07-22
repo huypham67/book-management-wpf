@@ -9,6 +9,8 @@ namespace Repositories.OrderDetailRepositories
 {
     public interface IOrderDetailRepository
     {
-        IEnumerable<OrderDetailDto> GetOrderDetailDtos();
+        IEnumerable<OrderDetailView> GetOrderDetailViews();
+        OrderDetailView? GetOrderDetailViewByOrderId(int id);
+        IEnumerable<OrderDetail> GetOrderDetailListByOrderId(int orderId);
     }
 }

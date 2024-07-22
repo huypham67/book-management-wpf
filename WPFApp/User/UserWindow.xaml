@@ -212,7 +212,7 @@
                                         Content="Change password"
                                         IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
                                         Style="{StaticResource MaterialDesignPaperButton}"
-                                        ToolTip="Resource name: MaterialDesignPaperButton" />
+                                        ToolTip="Resource name: MaterialDesignPaperButton" Click="btnChangePassword_Click" />
                                 <Button Name="btnUpdateProfile"
                                         Grid.Column="1"
                                         VerticalAlignment="Top"
@@ -221,7 +221,7 @@
                                         Content="Update"
                                         IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
                                         Style="{StaticResource MaterialDesignPaperButton}"
-                                        ToolTip="Resource name: MaterialDesignPaperButton" />
+                                        ToolTip="Resource name: MaterialDesignPaperButton" Click="btnUpdateProfile_Click" />
                                 <Button Name="btnLogOut"
                                         Grid.Column="2"
                                         VerticalAlignment="Top"
@@ -230,7 +230,7 @@
                                         Content="Log out"
                                         IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
                                         Style="{StaticResource MaterialDesignPaperButton}"
-                                        ToolTip="Resource name: MaterialDesignPaperButton" />
+                                        ToolTip="Resource name: MaterialDesignPaperButton" Click="btnLogOut_Click" />
                             </Grid>
                         </Grid>
                         <materialDesign:Card Width="1300"
@@ -318,7 +318,7 @@
                                     <Grid>
                                         <TextBlock IsEnabled="False"
                                                    Name="txtPhoneNumber"
-                                                   Text="{Binding FullName}" />
+                                                   Text="{Binding PhoneNumber}" />
                                     </Grid>
                                 </Border>
 
@@ -485,23 +485,18 @@
                                     </DataGridTemplateColumn>
                                     <DataGridTextColumn Header="Total Price"
                                                         Binding="{Binding Price}" />
-                                    <DataGridTemplateColumn Header="Actions">
+                                    <DataGridTemplateColumn>
                                         <DataGridTemplateColumn.CellTemplate>
                                             <DataTemplate>
-                                                <Button Command="{Binding DeleteCommand}"
-                                                        CommandParameter="{Binding}"
-                                                        Background="#FF4646"
+                                                <Button Content="DELETE"
+                                                        Background="Red"
                                                         Foreground="White"
-                                                        Padding="4,2"
-                                                        Width="28"
-                                                        Height="28">
-                                                    <StackPanel Orientation="Horizontal">
-                                                        <materialDesign:PackIcon Kind="Delete" />
-                                                    </StackPanel>
-                                                </Button>
+                                                        Command="{Binding AddToCartCommand}"
+                                                        CommandParameter="{Binding}" Margin="0,0,24,0" />
                                             </DataTemplate>
                                         </DataGridTemplateColumn.CellTemplate>
                                     </DataGridTemplateColumn>
+
                                 </DataGrid.Columns>
                             </DataGrid>
                         </ScrollViewer>
@@ -548,31 +543,32 @@
                         <ScrollViewer HorizontalScrollBarVisibility="Auto">
                             <DataGrid CanUserAddRows="True"
                                       CanUserDeleteRows="True"
-                                      x:Name="dtBookingDetails24"
+                                      x:Name="dgOrderHistoryList"
                                       SelectionMode="Extended"
                                       SelectionUnit="FullRow"
                                       AutoGenerateColumns="False"
                                       d:ItemsSource="{d:SampleData ItemCount=5}"
                                       IsReadOnly="True">
                                 <DataGrid.Columns>
-                                    <DataGridTextColumn Header="Order ID"
+                                    <DataGridTextColumn Header="ID"
                                                         Binding="{Binding OrderId}" />
                                     <DataGridTextColumn Header="Order Date"
                                                         Binding="{Binding OrderDate}" />
                                     <DataGridTextColumn Header="Quantity"
-                                                        Binding="{Binding BookingReservation.BookingDate}" />
+                                                        Binding="{Binding Quantity}" />
                                     <DataGridTextColumn Header="Total Price"
-                                                        Binding="{Binding StartDate}" />
+                                                        Binding="{Binding TotalPrice}" />
                                     <DataGridTextColumn Header="Status"
-                                                        Binding="{Binding StartDate}" />
+                                                        Binding="{Binding OrderStatus}" />
                                     <DataGridTemplateColumn>
                                         <DataGridTemplateColumn.CellTemplate>
                                             <DataTemplate>
-                                                <Button Command="{Binding ViewCommand}"
-                                                        CommandParameter="{Binding}"
+                                                <Button Name="btnViewOrderHistoryDetail" Command="{Binding OrderId}"
+                                                        CommandParameter="{Binding OrderId}"
                                                         Foreground="Orange"
                                                         Background="Transparent"
-                                                        BorderBrush="Transparent">
+                                                        BorderBrush="Transparent" Click="btnViewOrderHistoryDetail_Click">
+                           
                                                     <materialDesign:PackIcon Kind="Eye"
                                                                              Width="16"
                                                                              Height="16"

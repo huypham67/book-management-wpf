@@ -17,5 +17,28 @@ namespace DataAccessLayer.DAO
             _context = new();
             return _context.BookCategories;
         }
+        public BookCategory? GetBookCategoryById(int id)
+        {
+            _context = new();
+            return _context.BookCategories.FirstOrDefault(b => b.BookCategoryId == id);
+        }
+        public void AddBookCategory(BookCategory bookCategory)
+        {
+            _context = new();
+            _context.Add(bookCategory);
+            _context.SaveChanges();
+        }
+        public void UpdateBookCategory(BookCategory bookCategory)
+        {
+            _context = new();
+            _context.Update(bookCategory);
+            _context.SaveChanges();
+        }
+        public void DeleteBookCategory(BookCategory bookCategory)
+        {
+            _context = new();
+            _context.Remove(bookCategory);
+            _context.SaveChanges();
+        }
     }
 }

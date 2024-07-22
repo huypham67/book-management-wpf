@@ -184,7 +184,7 @@
                                 <Button Name="btnAddNewBookCategory" Grid.Column="0"
                                         IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
                                         Style="{StaticResource MaterialDesignFloatingActionMiniSecondaryLightButton}"
-                                        ToolTip="MaterialDesignFloatingActionMiniSecondaryLightButton" Height="40" VerticalAlignment="Top">
+                                        ToolTip="MaterialDesignFloatingActionMiniSecondaryLightButton" Height="40" VerticalAlignment="Top" Click="btnAddNewBookCategory_Click">
                                     <materialDesign:PackIcon Kind="Plus" />
                                 </Button>
 
@@ -210,11 +210,11 @@
                                             <DataTemplate>
                                                 <StackPanel Orientation="Horizontal">
                                                     <Button Name="btnEditBookCategory" Content="Edit"
-                                                            CommandParameter="{Binding BookingReservationID}"
+                                                            CommandParameter="{Binding BookCategoryId}"
                                                             Margin="5" 
                                                             Click="btnEditBookCategory_Click"/>
                                                     <Button Name="btnDeleteBookCategory" Content="Delete"
-                                                            CommandParameter="{Binding BookingReservationID}"
+                                                            CommandParameter="{Binding BookCategoryId}"
                                                             Margin="5" 
                                                             Click="btnDeleteBookCategory_Click"/>
                                                 </StackPanel>
@@ -250,24 +250,16 @@
                                     <ColumnDefinition></ColumnDefinition>
                                     <ColumnDefinition></ColumnDefinition>
                                 </Grid.ColumnDefinitions>
-                                <Button Grid.Column="0"
-                                        IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
-                                        Style="{StaticResource MaterialDesignFloatingActionMiniSecondaryLightButton}"
-                                        ToolTip="MaterialDesignFloatingActionMiniSecondaryLightButton">
-                                    <materialDesign:PackIcon Kind="Plus" />
-                                </Button>
 
                             </Grid>
 
                         </Grid>
                         <ScrollViewer HorizontalScrollBarVisibility="Auto">
-                            <DataGrid CanUserAddRows="True"
+                            <DataGrid Name="dgOrderDetailViewList" CanUserAddRows="True"
                                       CanUserDeleteRows="True"
-                                      x:Name="dgOrderDetailViewList"
                                       SelectionMode="Extended"
                                       SelectionUnit="FullRow"
                                       AutoGenerateColumns="False"
-                                      ItemsSource="{d:SampleData}"
                                       IsReadOnly="True">
                                 <DataGrid.Columns>
                                     <DataGridTextColumn Header="ID"
@@ -278,9 +270,9 @@
                                                         Binding="{Binding CustomerName}" />
                                     <DataGridTextColumn Header="Quantity"
                                                         Binding="{Binding Quantity}" />
-                                    <DataGridTextColumn Header="Total price"
+                                    <DataGridTextColumn Header="Total Price"
                                                         Binding="{Binding TotalPrice}" />
-                                    <DataGridTextColumn Header="Status "
+                                    <DataGridTextColumn Header="Status"
                                                         Binding="{Binding OrderStatus}" />
                                     <DataGridTemplateColumn>
                                         <DataGridTemplateColumn.CellTemplate>
@@ -289,7 +281,8 @@
                                                         CommandParameter="{Binding OrderId}"
                                                         Foreground="Orange"
                                                         Background="Transparent"
-                                                        BorderBrush="Transparent">
+                                                        BorderBrush="Transparent"
+                                                        Click="btnViewOrderDetail_Click">
                                                     <materialDesign:PackIcon Kind="Eye"
                                                                              Width="16"
                                                                              Height="16"

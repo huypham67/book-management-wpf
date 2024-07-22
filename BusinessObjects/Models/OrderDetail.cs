@@ -14,5 +14,6 @@ namespace BusinessObjects.Models
         public decimal UnitPrice { get; set; }
         public virtual Order? Order { get; set; }
         public virtual Book? Book { get; set; }
+        public decimal TotalPrice => Quantity * UnitPrice;
     }
 }

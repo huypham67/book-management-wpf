@@ -69,7 +69,7 @@ namespace WPFApp.Admin
         private void LoadOrderDetailViewList()
         {
             dgOrderDetailViewList.ItemsSource = null;
-            dgOrderDetailViewList.ItemsSource = _orderDetailViewRepository.GetOrderDetailDtos().ToList();
+            dgOrderDetailViewList.ItemsSource = _orderDetailViewRepository.GetOrderDetailViews().ToList();
             this.DataContext= dgOrderDetailViewList;
         }
 
@@ -206,15 +206,51 @@ namespace WPFApp.Admin
         }
         private void btnAddNewBookCategory_Click(object sender, RoutedEventArgs e)
         {
-
+            BookCategoryDetailWindow bookCategoryDetailWindow = new(null);
+            bookCategoryDetailWindow.Closed += (s, args) =>
+            {
+                LoadBookCategoryList();
+                dgBookCategoryList.Items.Refresh();
+            };
+            bookCategoryDetailWindow.ShowDialog();
         }
         private void btnEditBookCategory_Click(object sender, RoutedEventArgs e)
         {
-
+            Button button = sender as Button;
+            int bookCategoryId = (int)button?.CommandParameter;
+            BookCategory? bookCategory = _bookCategoryRepository.GetBookCategoryById(bookCategoryId);
+            BookCategoryDetailWindow bookCategoryDetailWindow = new(bookCategory);
+            bookCategoryDetailWindow.Closed += (s, args) =>
+            {
+                LoadBookCategoryList();
+                dgBookCategoryList.Items.Refresh();
+            };
+            bookCategoryDetailWindow.ShowDialog();
         }
         private void btnDeleteBookCategory_Click(object sender, RoutedEventArgs e)
         {
-
+            Button button = sender as Button;
+            int bookCategoryId = (int)button?.CommandParameter;
+            BookCategory? bookCategory = _bookCategoryRepository.GetBookCategoryById(bookCategoryId);
+            MessageBoxResult result = MessageBox.Show($"Do you want to delete book genre type: {bookCategory.BookGenreType}?",
+                                                      "Confirm Deleting",
+                                                      MessageBoxButton.YesNo,
+                                                      MessageBoxImage.Question);
+            if (result == MessageBoxResult.Yes)
+            {
+                _bookCategoryRepository.DeleteBookCategory(bookCategory);
+                MessageBox.Show("Delete completely");
+                LoadBookCategoryList();
+                dgBookCategoryList.Items.Refresh();
+            }
         }
+        private void btnViewOrderDetail_Click(object sender, RoutedEventArgs e)
+        {
+            Button button = sender as Button;
+            int orderId = (int)button?.CommandParameter;
+            OrderDetailWindowAdmin orderDetailWindowAdmin = new(orderId);
+            orderDetailWindowAdmin.ShowDialog();
+        }
+
     }
 }

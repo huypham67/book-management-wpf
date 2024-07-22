@@ -20,7 +20,7 @@ namespace BusinessObjects
         public DbSet<Author> Authors { get; set; }
         public DbSet<Order> Orders { get; set; }
         public DbSet<OrderDetail> OrderDetails { get; set; }
-        public DbSet<OrderDetailDto> OrderDetailViews { get; set; }
+        public DbSet<OrderDetailView> OrderDetailViews { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             IConfiguration configuration = new ConfigurationBuilder()
@@ -30,7 +30,7 @@ namespace BusinessObjects
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<OrderDetailDto>().HasNoKey().ToView("viewOrderDetails");
+            modelBuilder.Entity<OrderDetailView>().HasNoKey().ToView("viewOrderDetails");
             modelBuilder.ApplyConfiguration(new UserConfiguration());
             modelBuilder.ApplyConfiguration(new RoleConfiguration());
             modelBuilder.ApplyConfiguration(new BookConfiguration());

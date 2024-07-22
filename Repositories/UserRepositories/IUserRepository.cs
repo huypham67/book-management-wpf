@@ -15,5 +15,7 @@ namespace Repositories.UserRepositories
         void AddUser(UserAccount user);
         void UpdateUser(UserAccount user);
         void DeleteUser(UserAccount user);
+        bool ChangePassword(int userId, string newPassword);
+        bool CheckCurrentPassword(int userId, string currentPassword);
     }
 }
